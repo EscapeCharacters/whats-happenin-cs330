@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">What\'s Happenin\'</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="login">login</string>
+    <string name="title_activity_login">Login</string>
+    <string name="view_happenins_title">Upcoming Happenin\'s</string>
+    
+
+</resources>
