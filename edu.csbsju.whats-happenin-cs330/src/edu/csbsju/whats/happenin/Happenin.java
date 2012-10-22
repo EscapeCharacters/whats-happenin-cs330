@@ -57,6 +57,10 @@ public class Happenin {
 	}
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
-	}	
+	}
+	
+	public String toString() {
+		return getName();
+	}
 	
 }

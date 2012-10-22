@@ -8,11 +8,13 @@ import org.joda.time.DateTime;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 
 public class ViewHappenins extends Activity {
 
@@ -25,6 +27,26 @@ public class ViewHappenins extends Activity {
     	
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_happenins);
+        
+        //setup list view and click listener
+        ListView listView = (ListView) findViewById(R.id.mylist);
+        listView.setClickable(true);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        	public void onItemClick(AdapterView<Happenin> arg0, View arg1, 
+        			int position, long arg3){
+        		Object selected = listView.getItemAtPosition(position);
+        	}
+        });
+        
+        /*
+         * Adapter for the list to be displayed
+         */
+        
+        ArrayAdapter<Happenin> adapter = 
+        		new ArrayAdapter<Happenin>
+        (this, android.R.layout.simple_list_item_1, android.R.id.text1, getHappenins());
+        listView.setAdapter(adapter);
+        
     }
 
     @Override
@@ -32,6 +54,8 @@ public class ViewHappenins extends Activity {
         getMenuInflater().inflate(R.menu.activity_view_happenins, menu);
         return true;
     }
+    
+    
     
     //For now, this is just returns a few hard-coded Happenins.
     //Eventually, it'll have to do a database hit.

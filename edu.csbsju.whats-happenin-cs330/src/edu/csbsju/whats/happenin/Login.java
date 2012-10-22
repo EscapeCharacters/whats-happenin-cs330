@@ -28,7 +28,7 @@ public class Login extends Activity {
     	EditText pswdText = (EditText)findViewById(R.id.password);
     	String password = pswdText.getText().toString();
     	
-    	Intent intent = new Intent(this, Login.class);
+    	Intent intent = new Intent(this, ViewHappenins.class);
     	startActivity(intent);
     	
     }
