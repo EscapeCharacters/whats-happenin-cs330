@@ -31,12 +31,12 @@ public class ViewHappenins extends Activity {
         //setup list view and click listener
         ListView listView = (ListView) findViewById(R.id.mylist);
         listView.setClickable(true);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        	public void onItemClick(AdapterView<Happenin> arg0, View arg1, 
-        			int position, long arg3){
-        		Object selected = listView.getItemAtPosition(position);
-        	}
-        });
+        //listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //	public void onItemClick(AdapterView<Happenin> arg0, View arg1, 
+        	//		int position, long arg3){
+        	//	Object selected = listView.getItemAtPosition(position);
+        	//}
+        //});
         
         /*
          * Adapter for the list to be displayed
@@ -100,6 +100,15 @@ public class ViewHappenins extends Activity {
     			"and stories with the CSB|SJU and St. Joseph community");
     	hap4.setRating(2.0);
     	happenins.add(hap4);
+    	
+    	Happenin hap5 = new Happenin();
+    	hap5.setName("Thom's Apartment");
+    	hap5.setStartTime(new DateTime(2012, 9, 20, 19, 0));
+    	hap5.setEndTime(new DateTime(2012, 9, 20, 20, 30));
+    	hap5.setLocation("Maur 106");
+    	hap5.setDescription("4 cool dudes host a party!");
+    	hap5.setRating(4.0);
+    	happenins.add(hap5);
     	
     	return happenins;
     }
