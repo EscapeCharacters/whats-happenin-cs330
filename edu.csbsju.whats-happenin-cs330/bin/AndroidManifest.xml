@@ -24,6 +24,10 @@
             android:name=".ViewHappenins"
             android:label="@string/view_happenins_title" >
         </activity>
+        <activity 
+            android:name="ViewHappenin"
+            android:theme="@android:style/Theme.Holo.Light.Dialog">
+        </activity>
         
     </application>
 

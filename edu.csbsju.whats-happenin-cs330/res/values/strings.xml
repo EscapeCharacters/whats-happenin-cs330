@@ -6,6 +6,8 @@
     <string name="login">login</string>
     <string name="title_activity_login">Login</string>
     <string name="view_happenins_title">Upcoming Happenin\'s</string>
+    <string name="test_text">This is a test set of words to take up some space.</string>
+    <string name="test_label">TEST</string>
     
 
 </resources>
