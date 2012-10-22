@@ -1,11 +1,12 @@
 package edu.csbsju.whats.happenin;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class Login extends Activity {
 
@@ -28,8 +29,14 @@ public class Login extends Activity {
     	EditText pswdText = (EditText)findViewById(R.id.password);
     	String password = pswdText.getText().toString();
     	
-    	Intent intent = new Intent(this, ViewHappenins.class);
-    	startActivity(intent);
+    	TextView tv = (TextView) findViewById(R.id.errorMsg);
+    	
+    	//if(username.equals("Sample") && password.equals("Sample")){
+    		Intent intent = new Intent(this, ViewHappenins.class);
+    		startActivity(intent);
+    	//} else 
+    		tv.setText("Wrong shit");
+    		
     	
     }
 }

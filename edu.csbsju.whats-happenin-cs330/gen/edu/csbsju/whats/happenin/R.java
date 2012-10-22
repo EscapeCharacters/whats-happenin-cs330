@@ -32,12 +32,15 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int btn_finish_dialog=0x7f090000;
-        public static final int menu_settings=0x7f090004;
-        public static final int mylist=0x7f090003;
-        public static final int password=0x7f090002;
-        public static final int username=0x7f090001;
-        public static final int view_happenins=0x7f090005;
+        public static final int btn_finish_dialog=0x7f090002;
+        public static final int description=0x7f090001;
+        public static final int errorMsg=0x7f090005;
+        public static final int menu_settings=0x7f090007;
+        public static final int mylist=0x7f090006;
+        public static final int password=0x7f090004;
+        public static final int title=0x7f090000;
+        public static final int username=0x7f090003;
+        public static final int view_happenins=0x7f090008;
     }
     public static final class layout {
         public static final int activity_happenin_dialog=0x7f030000;
@@ -50,6 +53,8 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f060000;
+        public static final int happenin_description=0x7f060009;
+        public static final int happenin_title=0x7f060008;
         public static final int login=0x7f060003;
         public static final int password=0x7f060002;
         public static final int test_label=0x7f060007;
