@@ -31,6 +31,8 @@ public class Login extends Activity {
     	
     	TextView tv = (TextView) findViewById(R.id.errorMsg);
     	
+    	//SQL Query: SELECT * FROM Users u where u.username = username AND u.password = password
+    	
     	//if(username.equals("Sample") && password.equals("Sample")){
     		Intent intent = new Intent(this, ViewHappenins.class);
     		startActivity(intent);

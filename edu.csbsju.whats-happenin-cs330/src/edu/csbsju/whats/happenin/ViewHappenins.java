@@ -63,6 +63,8 @@ public class ViewHappenins extends Activity {
     
     //For now, this is just returns a few hard-coded Happenins.
     //Eventually, it'll have to do a database hit.
+    //
+    // SQL Query: SELECT * FROM Event e WHERE eventStart < DateTime.Now AND eventEnd > DateTime.Now
     private List<Happenin> getHappenins(){
     	List<Happenin> happenins = new ArrayList<Happenin>();
     	
