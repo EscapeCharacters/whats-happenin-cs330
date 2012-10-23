@@ -1,5 +1,9 @@
 package edu.csbsju.whats.happenin;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
+
+import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +26,7 @@ public class Login extends Activity {
         return true;
     }
     
-    public void login(View view){
+    public void login(View view) throws InterruptedException, ExecutionException, TimeoutException{
     	EditText userText = (EditText)findViewById(R.id.username);
     	String username = userText.getText().toString();
     	
@@ -33,10 +37,15 @@ public class Login extends Activity {
     	
     	//SQL Query: SELECT * FROM Users u where u.username = username AND u.password = password
     	
-    	//if(username.equals("Sample") && password.equals("Sample")){
+    	User user = SQLHelper.getUserByUsername(username);
+    	
+    	if(user == null){
+    		tv.setText("Wrong info");
+    	}
+    	else if(password.equals(user.getPassword()) && username.equals(user.getUsername())){
     		Intent intent = new Intent(this, ViewHappenins.class);
     		startActivity(intent);
-    	//} else 
+    	} else 
     		tv.setText("Wrong shit");
     		
     	
