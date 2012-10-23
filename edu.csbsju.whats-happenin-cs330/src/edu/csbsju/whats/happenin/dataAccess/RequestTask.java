@@ -23,7 +23,7 @@ class RequestTask extends AsyncTask<String, String, String>{
 		try{
 			// Create the URL object that points
 			// at the default file index.html
-			url  = new URL(uri[0]+"?name="+uri[1]);
+			url  = new URL(uri[0]);
 			urlConn = url.openConnection();
 			inStream = new InputStreamReader( 
 					urlConn.getInputStream());

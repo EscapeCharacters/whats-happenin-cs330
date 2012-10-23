@@ -6,12 +6,14 @@
     <EditText android:id="@+id/username"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/username" />
+        android:hint="@string/username" 
+        android:inputType="text"/>
     
     <EditText android:id="@+id/password"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/password" />
+        android:hint="@string/password"
+        android:inputType="textPassword" />
     <Button
      android:layout_width="100dp"
      android:layout_height="wrap_content"

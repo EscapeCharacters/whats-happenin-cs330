@@ -2,6 +2,10 @@ package edu.csbsju.whats.happenin;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
+
+import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -21,6 +25,20 @@ public class ViewHappenins extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	happsCollection.initDummy();
+    	
+    	ArrayList<Happenin> happs = new ArrayList<Happenin>();
+		try {
+			happs = SQLHelper.getHappenins();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TimeoutException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
     	//populate the view with these happenins
     	//this might be of help:  http://developer.android.com/guide/topics/ui/layout/listview.html#Loader
@@ -48,7 +66,7 @@ public class ViewHappenins extends Activity {
         ArrayAdapter<Happenin> adapter = 
         		new ArrayAdapter<Happenin>
         			(this, android.R.layout.simple_list_item_1, android.R.id.text1, 
-        			happsCollection.getHappenins());
+        			happs);
         listView.setAdapter(adapter);
         
     }

@@ -14,13 +14,14 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="300dp"
-    android:layout_height="500dp"
+    android:layout_height="300dp"
     android:padding="12dip"
     >
-
+
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -33,12 +34,27 @@ limitations under the License.
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/test_text" />
-
-    <Button
-        android:id="@+id/btn_finish_dialog"
+    
+    <TextView 
+        android:id="@+id/when"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="finishDialog"
-        android:text="@string/test_label" />
+        android:text="@string/happenin_when"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="10dp"/>
+    
+    <TextView android:id="@+id/where"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/happenin_where"
+        android:layout_gravity="center_horizontal"/>
 
-</GridLayout>
+    <Button
+        android:id="@+id/make_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="makeComment"
+        android:text="@string/make_comment" 
+        android:layout_gravity="center_horizontal|bottom"/>
+
+</LinearLayout>

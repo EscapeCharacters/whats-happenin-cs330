@@ -1,13 +1,15 @@
 package edu.csbsju.whats.happenin;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
+
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
-import android.widget.Toast;
+import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 
 public class ViewHappenin extends Activity {
 	
@@ -24,14 +26,25 @@ public class ViewHappenin extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_happenin_dialog);
-        setupMyHappenin();
+        try {
+			setupMyHappenin();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TimeoutException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 	
-	private void setupMyHappenin(){
+	private void setupMyHappenin() throws InterruptedException, ExecutionException, TimeoutException{
 		//Get and set the happenin to display
 				Intent myIntent = getIntent();
 				myHappLoc = myIntent.getIntExtra("clicked", -1);
-				myHap = happsCollection.getHappenins().get(myHappLoc);
+				myHap = SQLHelper.getHappenins().get(myHappLoc);
 				
 				TextView title = new TextView(ViewHappenin.this), 
 						description = new TextView(ViewHappenin.this);

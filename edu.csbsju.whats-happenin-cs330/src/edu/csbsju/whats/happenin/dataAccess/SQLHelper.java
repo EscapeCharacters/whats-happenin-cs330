@@ -12,21 +12,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
 import android.net.ParseException;
-import android.os.AsyncTask;
+import edu.csbsju.whats.happenin.Happenin;
+import edu.csbsju.whats.happenin.HappeninsCollection;
 import edu.csbsju.whats.happenin.User;
 
 public class SQLHelper {
 
 
 	public static User getUserByUsername(String username) throws InterruptedException, ExecutionException, TimeoutException{
-
-
-
 		User user = null;
 		RequestTask task = new RequestTask();
-		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/user.php", username);
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/user.php?name="+username);
 		task.get(2000, TimeUnit.MILLISECONDS);
 		String result = task.getJsonData();
 		//result = "[{'user_id':'2','name':'Andrew Zurn','email':'awzurn@csbsju.edu','password':'hello','username':'awzurn'}]";
@@ -52,20 +49,42 @@ public class SQLHelper {
 		} catch (ParseException e1) {
 
 		}
-
-//		user = new User();
-//		user.setUserId(0);
-//		user.setPassword("hello");
-//		user.setUsername("ajthom");
-//		user.setName("Andrew Thom");
-
 		return user;
 
 	}
 
-	private static Context getBaseContext() {
-		// TODO Auto-generated method stub
-		return null;
+	public static ArrayList<Happenin> getHappenins() throws InterruptedException, ExecutionException, TimeoutException{
+		Happenin happ = null;
+		ArrayList<Happenin> happenins = null;
+		RequestTask task = new RequestTask();
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/happenings.php");
+		task.get(2000, TimeUnit.MILLISECONDS);
+		String result = task.getJsonData();
+		//result = "[{'user_id':'2','name':'Andrew Zurn','email':'awzurn@csbsju.edu','password':'hello','username':'awzurn'}]";
+		InputStream is = null;
+		StringBuilder sb = null;
+		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+		List<User> r = new ArrayList<User>();
+		try{
+			happenins = new ArrayList<Happenin>();
+			JSONArray jArray = new JSONArray(result);
+			JSONObject json_data=null;
+			for(int i=0;i<jArray.length(); i++) {
+				json_data = jArray.getJSONObject(i);
+				happ = new Happenin();
+				happ.setName(json_data.getString("name"));
+				happ.setDescription(json_data.getString("description"));
+				happenins.add(happ);
+			}
+		}
+		catch(JSONException e1){
+
+		} catch (ParseException e1) {
+
+		}
+//		HappeninsCollection hc = new HappeninsCollection();
+//		hc.initDummy();
+		return happenins;
 	}
 
 }

@@ -10,6 +10,9 @@
     <string name="test_label">TEST</string>
     <string name="happenin_title"></string>
     <string name="happenin_description"></string>
+    <string name="happenin_when">when?</string>
+    <string name="happenin_where">where?</string>
+    <string name="make_comment">Make Comment</string>
     
 
 </resources>
