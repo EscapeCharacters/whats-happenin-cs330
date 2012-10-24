@@ -14,6 +14,7 @@ public class Happenin {
 	private String description;
 	private Double rating;
 	private List<Comment> comments;
+	private int id;
 	
 	
 	public String getName() {
@@ -61,6 +62,12 @@ public class Happenin {
 	
 	public String toString() {
 		return getName();
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getId() {
+		return id;
 	}
 	
 }

@@ -44,15 +44,19 @@ public class ViewHappenin extends Activity {
 		//Get and set the happenin to display
 				Intent myIntent = getIntent();
 				myHappLoc = myIntent.getIntExtra("clicked", -1);
-				myHap = SQLHelper.getHappenins().get(myHappLoc);
+				int myHappId = myIntent.getIntExtra("happId", -1);
+				myHap = SQLHelper.getHappeninById(myHappId);
 				
 				TextView title = new TextView(ViewHappenin.this), 
 						description = new TextView(ViewHappenin.this);
+				TextView location = new TextView(ViewHappenin.this);
+				location = (TextView)findViewById(R.id.where);
 				title = (TextView)findViewById(R.id.title);
 				description = (TextView)findViewById(R.id.description);
 				
 				title.setText(myHap.getName());
 				description.setText(myHap.getDescription());
+				location.setText(myHap.getLocation());
 	}
 
     /**

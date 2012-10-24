@@ -21,12 +21,12 @@ import android.widget.TextView;
 public class ViewHappenins extends Activity {
 	
 	HappeninsCollection happsCollection = new HappeninsCollection();
+	ArrayList<Happenin> happs = new ArrayList<Happenin>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	happsCollection.initDummy();
     	
-    	ArrayList<Happenin> happs = new ArrayList<Happenin>();
 		try {
 			happs = SQLHelper.getHappenins();
 		} catch (InterruptedException e) {
@@ -53,7 +53,7 @@ public class ViewHappenins extends Activity {
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 Intent i = new Intent(ViewHappenins.this, ViewHappenin.class);
                 i.putExtra("clicked", position);
-             
+                i.putExtra("happId", happs.get(position).getId());
                 startActivity(i);
             }
         });

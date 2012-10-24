@@ -14,7 +14,6 @@ import org.json.JSONObject;
 
 import android.net.ParseException;
 import edu.csbsju.whats.happenin.Happenin;
-import edu.csbsju.whats.happenin.HappeninsCollection;
 import edu.csbsju.whats.happenin.User;
 
 public class SQLHelper {
@@ -74,6 +73,8 @@ public class SQLHelper {
 				happ = new Happenin();
 				happ.setName(json_data.getString("name"));
 				happ.setDescription(json_data.getString("description"));
+				happ.setLocation(json_data.getString("location"));
+				happ.setId(json_data.getInt("id"));
 				happenins.add(happ);
 			}
 		}
@@ -85,6 +86,45 @@ public class SQLHelper {
 //		HappeninsCollection hc = new HappeninsCollection();
 //		hc.initDummy();
 		return happenins;
+	}
+	
+	public static Happenin getHappeninById(int happId){
+		Happenin happ = null;
+		//ArrayList<Happenin> happenins = null;
+		RequestTask task = new RequestTask();
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/happenin.php?id="+happId);
+		try {
+			task.get(2000, TimeUnit.MILLISECONDS);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		} catch (TimeoutException e) {
+			e.printStackTrace();
+		}
+		String result = task.getJsonData();
+		InputStream is = null;
+		StringBuilder sb = null;
+		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+		List<User> r = new ArrayList<User>();
+		try{
+			JSONArray jArray = new JSONArray(result);
+			JSONObject json_data=null;
+			for(int i=0;i<jArray.length(); i++) {
+				json_data = jArray.getJSONObject(i);
+				happ = new Happenin();
+				happ.setName(json_data.getString("name"));
+				happ.setDescription(json_data.getString("description"));
+				happ.setLocation(json_data.getString("location"));
+				happ.setId(json_data.getInt("id"));
+			}
+		}
+		catch(JSONException e1){
+
+		} catch (ParseException e1) {
+
+		}
+		return happ;
 	}
 
 }
