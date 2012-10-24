@@ -6,7 +6,8 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="15" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -25,11 +26,14 @@
             android:name=".ViewHappenins"
             android:label="@string/view_happenins_title" >
         </activity>
-        <activity 
+        <activity
             android:name="ViewHappenin"
-            android:theme="@android:style/Theme.Holo.Light.Dialog">
+            android:theme="@android:style/Theme.Holo.Light.Dialog" >
         </activity>
-        
+        <activity
+            android:name=".ViewComments"
+            android:label="@string/view_comments_title" >
+        </activity>
     </application>
 
 </manifest>

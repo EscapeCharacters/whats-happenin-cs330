@@ -11,7 +11,7 @@ import android.os.AsyncTask;
 
 class RequestTask extends AsyncTask<String, String, String>{
 
-	private String jsonData;
+	private String jsonData = "";
 	
     @Override
     protected String doInBackground(String... uri) {
@@ -30,9 +30,9 @@ class RequestTask extends AsyncTask<String, String, String>{
 			buff= new BufferedReader(inStream);
 
 			StringBuilder sb = new StringBuilder("");
-			// Read and print the lines from index.html
+			// Read and print the lines from uri[0]
 			while (true){
-				nextLine =buff.readLine();  
+				nextLine = buff.readLine();  
 				if (nextLine !=null){
 					sb.append(nextLine);
 				}

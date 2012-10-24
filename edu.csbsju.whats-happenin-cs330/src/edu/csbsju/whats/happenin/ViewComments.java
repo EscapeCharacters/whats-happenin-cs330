@@ -8,24 +8,20 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 
-public class ViewHappenins extends Activity {
-	
-	HappeninsCollection happsCollection = new HappeninsCollection();
-	ArrayList<Happenin> happs = new ArrayList<Happenin>();
+public class ViewComments extends Activity {
+	ArrayList<Comment> comments = new ArrayList<Comment>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-    	happsCollection.initDummy();
+    	Intent i = getIntent();
+    	int id = i.getIntExtra("happId", 0);
     	
 		try {
-			happs = SQLHelper.getHappenins();
+			comments = SQLHelper.getCommentsByHappeninId(id);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,29 +37,29 @@ public class ViewHappenins extends Activity {
     	//this might be of help:  http://developer.android.com/guide/topics/ui/layout/listview.html#Loader
     	
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_happenins);
+        setContentView(R.layout.activity_comment);
         
         //setup list view and click listener
-        ListView listView = (ListView) findViewById(R.id.mylist);
-        listView.setClickable(true);
-        listView.setOnItemClickListener( new OnItemClickListener() {
-            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                Intent i = new Intent(ViewHappenins.this, ViewHappenin.class);
-                i.putExtra("clicked", position);
-                i.putExtra("happId", happs.get(position).getId());
-                startActivity(i);
-            }
-        });
+        ListView listView = (ListView) findViewById(R.id.commentList);
+//        listView.setClickable(true);
+//        listView.setOnItemClickListener( new OnItemClickListener() {
+//            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+//                Intent i = new Intent(ViewComments.this, ViewHappenin.class);
+//                i.putExtra("clicked", position);
+//                i.putExtra("happId", happs.get(position).getId());
+//                startActivity(i);
+//            }
+//        });
 
         
         /*
          * Adapter for the list to be displayed
          */
         
-        ArrayAdapter<Happenin> adapter = 
-        		new ArrayAdapter<Happenin>
+        ArrayAdapter<Comment> adapter = 
+        		new ArrayAdapter<Comment>
         			(this, android.R.layout.simple_list_item_1, android.R.id.text1, 
-        			happs);
+        			comments);
         listView.setAdapter(adapter);
         
     }

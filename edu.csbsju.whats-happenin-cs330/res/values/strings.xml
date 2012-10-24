@@ -12,7 +12,8 @@
     <string name="happenin_description"></string>
     <string name="happenin_when">when?</string>
     <string name="happenin_where">where?</string>
-    <string name="make_comment">Make Comment</string>
+    <string name="make_comment">View Comments</string>
+    <string name="view_comments_title">Comments</string>
     
 
 </resources>
