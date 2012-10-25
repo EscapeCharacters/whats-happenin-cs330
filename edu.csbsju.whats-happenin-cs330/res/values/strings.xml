@@ -14,6 +14,7 @@
     <string name="happenin_where">where?</string>
     <string name="make_comment">View Comments</string>
     <string name="view_comments_title">Comments</string>
+    <string name="new_user">New User?</string>
     
 
 </resources>

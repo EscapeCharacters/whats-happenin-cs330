@@ -17,6 +17,14 @@
         android:layout_height="wrap_content"
         android:hint="@string/password"
         android:inputType="textPassword" />
+    
+    <Button
+     android:layout_width="100dp"
+     android:layout_height="wrap_content"
+     android:layout_gravity="left"
+     android:text="@string/new_user"
+     android:onClick="newUser" />
+    
     <Button
      android:layout_width="100dp"
      android:layout_height="wrap_content"
