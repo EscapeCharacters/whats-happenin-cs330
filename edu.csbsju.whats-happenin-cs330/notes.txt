@@ -1,3 +1,5 @@
 Website for instructions on how to set up the PHP scripts:
 
 http://www.helloandroid.com/tutorials/connecting-mysql-database
+
+Test commit with EGIT
