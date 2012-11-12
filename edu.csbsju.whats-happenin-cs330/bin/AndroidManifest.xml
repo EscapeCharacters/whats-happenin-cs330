@@ -23,6 +23,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".CreateNewUser"
+            android:label="@string/create_user_title" >
+        </activity>
+        <activity
+            android:name="CreateNewUser"
+            android:theme="@android:style/Theme.Holo.Light.Dialog" >
+        </activity>
+        <activity
             android:name=".ViewHappenins"
             android:label="@string/view_happenins_title" >
         </activity>

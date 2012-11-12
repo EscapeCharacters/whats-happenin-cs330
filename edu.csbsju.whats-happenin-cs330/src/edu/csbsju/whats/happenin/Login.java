@@ -21,15 +21,8 @@ public class Login extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		
-		Button newUserBtn = (Button)findViewById(R.id.new_user_button);
-		newUserBtn.setOnClickListener(new OnClickListener(){
-			public void onClick(View view){
-				Intent intent = new Intent(this, CreateNewUser.class);
-				startActivity(intent);
-			}
-		});
 	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -37,7 +30,13 @@ public class Login extends Activity {
 		return true;
 	}
 	
-
+	
+	
+	public void newUser(View view)throws InterruptedException, ExecutionException, TimeoutException{
+		Intent intent = new Intent(this, CreateNewUser.class);
+		startActivity(intent);
+	}
+	
 	public void login(View view) throws InterruptedException, ExecutionException, TimeoutException{
 		EditText userText = (EditText)findViewById(R.id.username);
 		String username = userText.getText().toString();
