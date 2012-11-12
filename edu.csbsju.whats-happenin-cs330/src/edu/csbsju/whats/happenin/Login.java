@@ -25,7 +25,8 @@ public class Login extends Activity {
 		Button newUserBtn = (Button)findViewById(R.id.new_user_button);
 		newUserBtn.setOnClickListener(new OnClickListener(){
 			public void onClick(View view){
-				setContentView(R.layout.activity_new_user);
+				Intent intent = new Intent(this, CreateNewUser.class);
+				startActivity(intent);
 			}
 		});
 	}

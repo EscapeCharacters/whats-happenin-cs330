@@ -1,10 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="250dp"
     android:layout_height="fill_parent"
-    android:layout_gravity="center_horizontal"
-    android:gravity="center_horizontal|right"
     android:orientation="vertical"
-    android:paddingTop="100dp" >
+    android:paddingTop="100dp"
+    android:gravity="center_horizontal"
+    android:layout_gravity="center_horizontal">
 
     <EditText
         android:id="@+id/username"
@@ -21,7 +21,7 @@
         android:inputType="textPassword" />
 
     <Button
-        android:layout_width="100dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:onClick="login"
@@ -29,10 +29,10 @@
     
     <Button
         android:id="@+id/new_user_button"
-        android:layout_width="100dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="@string/new_user" />
+        android:text="@string/create_new_user" />
 
     <TextView
         android:id="@+id/errorMsg"

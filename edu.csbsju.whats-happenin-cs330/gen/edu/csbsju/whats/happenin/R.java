@@ -33,6 +33,7 @@ public final class R {
     }
     public static final class id {
         public static final int commentList=0x7f090000;
+        public static final int create_user=0x7f090010;
         public static final int description=0x7f090002;
         public static final int errorMsg=0x7f090009;
         public static final int make_comment=0x7f090005;
@@ -46,7 +47,7 @@ public final class R {
         public static final int password=0x7f090007;
         public static final int title=0x7f090001;
         public static final int username=0x7f090006;
-        public static final int view_happenins=0x7f090010;
+        public static final int view_happenins=0x7f090011;
         public static final int when=0x7f090003;
         public static final int where=0x7f090004;
     }
@@ -59,21 +60,24 @@ public final class R {
     }
     public static final class menu {
         public static final int activity_login=0x7f080000;
-        public static final int activity_view_happenins=0x7f080001;
+        public static final int activity_new_user=0x7f080001;
+        public static final int activity_view_happenins=0x7f080002;
     }
     public static final class string {
         public static final int app_name=0x7f060000;
-        public static final int create_email=0x7f06000f;
-        public static final int create_name=0x7f060011;
-        public static final int create_password=0x7f060010;
-        public static final int create_username=0x7f060012;
+        public static final int create_email=0x7f060010;
+        public static final int create_name=0x7f060012;
+        public static final int create_new_user=0x7f06000e;
+        public static final int create_password=0x7f060011;
+        public static final int create_user=0x7f06000f;
+        public static final int create_user_title=0x7f060014;
+        public static final int create_username=0x7f060013;
         public static final int happenin_description=0x7f060009;
         public static final int happenin_title=0x7f060008;
         public static final int happenin_when=0x7f06000a;
         public static final int happenin_where=0x7f06000b;
         public static final int login=0x7f060003;
         public static final int make_comment=0x7f06000c;
-        public static final int new_user=0x7f06000e;
         public static final int password=0x7f060002;
         public static final int test_label=0x7f060007;
         public static final int test_text=0x7f060006;

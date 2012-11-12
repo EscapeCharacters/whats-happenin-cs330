@@ -14,11 +14,13 @@
     <string name="happenin_where">where?</string>
     <string name="make_comment">View Comments</string>
     <string name="view_comments_title">Comments</string>
-    <string name="new_user">Create User</string>
-    <string name="create_email">Enter Your Email</string>
-    <string name="create_password">Enter a Password</string>
-    <string name="create_name">Enter Your Name</string>
-    <string name="create_username">Enter a Username</string>
+    <string name="create_new_user">create new user</string>
+    <string name="create_user">create</string>
+    <string name="create_email">enter your email</string>
+    <string name="create_password">enter a password</string>
+    <string name="create_name">enter your name</string>
+    <string name="create_username">enter a username</string>
+    <string name="create_user_title">create user</string>
     
 
 </resources>
