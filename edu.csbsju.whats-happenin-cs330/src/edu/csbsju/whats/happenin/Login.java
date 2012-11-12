@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
@@ -19,6 +21,13 @@ public class Login extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		
+		Button newUserBtn = (Button)findViewById(R.id.new_user_button);
+		newUserBtn.setOnClickListener(new OnClickListener(){
+			public void onClick(View view){
+				setContentView(R.layout.activity_new_user);
+			}
+		});
 	}
 
 	@Override
@@ -26,6 +35,7 @@ public class Login extends Activity {
 		getMenuInflater().inflate(R.menu.activity_login, menu);
 		return true;
 	}
+	
 
 	public void login(View view) throws InterruptedException, ExecutionException, TimeoutException{
 		EditText userText = (EditText)findViewById(R.id.username);

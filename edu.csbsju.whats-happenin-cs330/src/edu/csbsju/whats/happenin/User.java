@@ -8,6 +8,15 @@ public class User {
 	private String emailAddress;
 	private String name;
 	
+	public User(){}
+	
+	public User(String name, String username, String password, String email){
+		this.name = name;
+		this.username = username;
+		this.password = password;
+		this.emailAddress = email;
+	}
+	
 	public String getUsername() {
 		return username;
 	}
