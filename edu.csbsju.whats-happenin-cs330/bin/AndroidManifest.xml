@@ -27,7 +27,7 @@
             android:label="@string/create_user_title" >
         </activity>
         <activity
-            android:name="CreateNewUser"
+            android:name="CreateNewuser"
             android:theme="@android:style/Theme.Holo.Light.Dialog" >
         </activity>
         <activity

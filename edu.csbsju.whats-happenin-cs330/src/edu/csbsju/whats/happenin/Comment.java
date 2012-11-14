@@ -6,19 +6,12 @@ import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 
 public class Comment {
 
-	private User userEntered;
 	private String comment;
 	private DateTime dateTime;
 	private int happeninId;
 	private int userId;
 	private int commentId;
 	
-	public User getUserEntered() {
-		return userEntered;
-	}
-	public void setUserEntered(User userEntered) {
-		this.userEntered = userEntered;
-	}
 	public String getComment() {
 		return comment;
 	}
@@ -50,7 +43,10 @@ public class Comment {
 	public int getCommentId() {
 		return commentId;
 	}
+	public User getUser(){
+		return SQLHelper.getUserById(getUserId());
+	}
 	public String toString(){
-		return comment;
+		return "" + getUser().getName() + ": " + getComment();
 	}
 }

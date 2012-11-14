@@ -45,6 +45,45 @@ public class SQLHelper {
 		return user;
 
 	}
+	
+	public static User getUserById(int id) {
+		User user = null;
+		RequestTask task = new RequestTask();
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/userById.php?id="+id);
+		try {
+			task.get(2000, TimeUnit.MILLISECONDS);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TimeoutException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String result = task.getJsonData();
+		try{
+			JSONArray jArray = new JSONArray(result);
+			JSONObject json_data=null;
+			for(int i=0;i<jArray.length(); i++) {
+				json_data = jArray.getJSONObject(i);
+				user = new User();
+				user.setUserId(json_data.getInt("user_id"));
+				user.setUsername(json_data.getString("username"));
+				user.setEmailAddress(json_data.getString("email"));
+				user.setName(json_data.getString("name"));
+				user.setPassword(json_data.getString("password"));
+			}
+		}
+		catch(JSONException e1){
+
+		} catch (ParseException e1) {
+
+		}
+		return user;
+
+	}
 
 	public static ArrayList<Happenin> getHappenins() throws InterruptedException, ExecutionException, TimeoutException{
 		Happenin happ = null;
@@ -151,6 +190,11 @@ public class SQLHelper {
 		return comments;
 	}
 	
+	public static void insertComment(int userId, int happId, String comment){
+		RequestTask task = new RequestTask();
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/insertComment.php?happid="+happId+"&comment="+comment);
+	}
+	
 	public static DateTime parseMySqlDate(String dateString){
 		String[] split1 = dateString.split(" ");//Separates the Date and Time
 		String date = split1[0];
@@ -166,5 +210,6 @@ public class SQLHelper {
 		DateTime dt = new DateTime(year, month, day, hour, minute, second);
 		return dt;
 	}
+
 
 }
