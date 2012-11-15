@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingTop="15dp"
+    android:gravity="center_horizontal"
+    android:layout_gravity="center_horizontal">
+
+    <EditText
+        android:id="@+id/new_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/create_name"
+        android:inputType="text" >
+
+        <requestFocus />
+    </EditText>
+    
+    <EditText 
+        android:id="@+id/new_username"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/create_username" 
+        android:inputType="text"/>
+    
+    <EditText 
+        android:id="@+id/new_password"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/create_password"
+        android:inputType="textPassword" />
+    
+    <EditText 
+        android:id="@+id/new_email"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/create_email" 
+        android:inputType="text"/>
+    
+    <Button 
+        android:layout_width="100dp"
+     	android:layout_height="wrap_content"
+     	android:layout_gravity="right"
+     	android:onClick="newUser" 
+     	android:text="@string/create_user" />
+    
+    <TextView
+        android:id="@+id/errorMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+
+</LinearLayout>
