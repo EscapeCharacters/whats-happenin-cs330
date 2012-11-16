@@ -30,11 +30,9 @@ public class Login extends Activity {
 		return true;
 	}
 	
-	
-	
 	public void newUser(View view)throws InterruptedException, ExecutionException, TimeoutException{
-//		Intent intent = new Intent(this, CreateNewUser.class);
-//		startActivity(intent);
+		Intent intent = new Intent(this, CreateNewUser.class);
+		startActivity(intent);
 	}
 	
 	public void login(View view) throws InterruptedException, ExecutionException, TimeoutException{
@@ -48,7 +46,7 @@ public class Login extends Activity {
 
 		User user = null;
 
-		if(username.equals("") || password.equals("")){
+		if(username == null || password == null){
 			Context context = getApplicationContext();
 			CharSequence text = "Please include both your username and password";
 			int duration = Toast.LENGTH_SHORT;

@@ -28,13 +28,6 @@ public class CreateNewUser extends Activity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_user);
-		
-//		Button newUserBtn = (Button)findViewById(R.id.new_user_button);
-//		newUserBtn.setOnClickListener(new OnClickListener(){
-//			public void onClick(View view){
-//				setContentView(R.layout.activity_new_user);
-//			}
-//		});
 	}
 
 	@Override
@@ -44,6 +37,7 @@ public class CreateNewUser extends Activity{
 	}
 	
 	public void newUser(View view) throws InterruptedException, ExecutionException, TimeoutException{
+		User user;
 		EditText nameText = (EditText)findViewById(R.id.new_name);
 		String name = nameText.getText().toString();
 		
@@ -56,7 +50,7 @@ public class CreateNewUser extends Activity{
 		EditText emailText = (EditText)findViewById(R.id.new_email);
 		String email = emailText.getText().toString();
 		
-		User user = null;
+		user = null;
 		boolean hasFirstAndLast = name.contains(" ");
 		if( name.equals("") || username.equals("") || password.equals("") || email.equals("")){
 			Context context = getApplicationContext();
