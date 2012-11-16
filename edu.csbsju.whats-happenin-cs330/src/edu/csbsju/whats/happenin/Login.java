@@ -33,8 +33,8 @@ public class Login extends Activity {
 	
 	
 	public void newUser(View view)throws InterruptedException, ExecutionException, TimeoutException{
-//		Intent intent = new Intent(this, CreateNewUser.class);
-//		startActivity(intent);
+		Intent intent = new Intent(this, CreateNewUser.class);
+		startActivity(intent);
 	}
 	
 	public void login(View view) throws InterruptedException, ExecutionException, TimeoutException{
