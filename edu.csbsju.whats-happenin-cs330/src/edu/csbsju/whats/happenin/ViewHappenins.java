@@ -50,7 +50,7 @@ public class ViewHappenins extends Activity {
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 Intent i = new Intent(ViewHappenins.this, ViewHappenin.class);
                 i.putExtra("clicked", position);
-                i.putExtra("happId", happs.get(position).getId());
+                i.putExtra("happid", position);
                 startActivity(i);
             }
         });
