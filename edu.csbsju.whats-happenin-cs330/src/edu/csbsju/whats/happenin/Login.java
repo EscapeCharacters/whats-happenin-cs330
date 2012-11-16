@@ -46,7 +46,7 @@ public class Login extends Activity {
 
 		User user = null;
 
-		if(username == null || password == null){
+		if(username.equals("") || password.equals("") ){
 			Context context = getApplicationContext();
 			CharSequence text = "Please include both your username and password";
 			int duration = Toast.LENGTH_SHORT;
