@@ -98,8 +98,14 @@ public class CreateNewUser extends Activity{
 		}
 		else{ //everything clears, proceed to insert into database, and proceed to happenins'
 			//create user in database
-			Intent intent = new Intent(this, ViewHappenins.class);
-			startActivity(intent);
+			try{
+				//create user in database, and send to login screen
+				toastErrorMsg("Account created! Redirecting to login!");
+				finish();
+			}
+			catch(Exception e){
+				toastErrorMsg("Was unable to create account within the database.  Please try again later!");
+			}
 		}
 	}
 	
