@@ -30,11 +30,11 @@ public class CreateNewUser extends Activity{
 		setContentView(R.layout.activity_new_user);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.activity_new_user, menu);
-		return true;
-	}
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//		getMenuInflater().inflate(R.menu.activity_new_user, menu);
+//		return true;
+//	}
 	
 	public void newUser(View view) throws InterruptedException, ExecutionException, TimeoutException{
 		User user;
@@ -55,6 +55,14 @@ public class CreateNewUser extends Activity{
 		
 		
 		user = null;
+//		boolean userTaken = false;
+//		usersList = SQLHelper.getAllUsers();
+//		for(User usr: usersList){
+//			if(usr.getUsername().equals(username){
+//				userTaken = true;
+//				break;
+//			}
+//		}
 		boolean hasFirstAndLast = name.contains(" ");
 		String symbols = "0123456789-+_!@#$%^&*.,?";
 		boolean hasSymbol = false;
@@ -65,51 +73,40 @@ public class CreateNewUser extends Activity{
 			}
 		}
 		if( name.equals("") || username.equals("") || password.equals("") || email.equals("")){
-			Context context = getApplicationContext();
-			CharSequence text = "Please insure all fields are filled";
-			int duration = Toast.LENGTH_SHORT;
-			Toast.makeText(context, text, duration).show();
+			toastErrorMsg("Please insure all fields are filled");
 		}
 		else if( email.length() < 11 || !email.substring(email.length()-10,email.length()).equals("csbsju.edu")){ //non-valid email
-			Context context = getApplicationContext();
-			CharSequence text = "Please enter a valid CSBSJU email address!";
-			int duration = Toast.LENGTH_SHORT;
-			Toast.makeText(context, text, duration).show();
+			toastErrorMsg("Please enter a valid CSBSJU email address!");
 		}
 		else if( password.length() <= 6){ //password not long enough
-			Context context = getApplicationContext();
-			CharSequence text = "Password must be longer than 6 characters!";
-			int duration = Toast.LENGTH_SHORT;
-			Toast.makeText(context, text, duration).show();
+			toastErrorMsg("Password must be longer than 6 characters!");
 		}
 		else if( username.length() < 6){ //username not long enough
-			Context context = getApplicationContext();
-			CharSequence text = "Username must be longer than 6 characters!";
-			int duration = Toast.LENGTH_SHORT;
-			Toast.makeText(context, text, duration).show();
+			toastErrorMsg("Username must be longer than 6 characters!");
 		}
 		else if( hasFirstAndLast == false){ //does not contain a space, thus no last name (need to further checkt this)
-			Context context = getApplicationContext();
-			CharSequence text = "Please enter first and last name!";
-			int duration = Toast.LENGTH_SHORT;
-			Toast.makeText(context, text, duration).show();
+			toastErrorMsg("Please enter first and last name!");
 		}
 		else if( hasSymbol != true ){
-			Context context = getApplicationContext();
-			CharSequence text = "Password must contain one symbol or number!";
-			int duration = Toast.LENGTH_SHORT;
-			Toast.makeText(context, text, duration).show();
+			toastErrorMsg("Password must contain one symbol or number!");
 		}
+//		else if( userTaken != false ){
+//			toastErrorMsg("This username is already taken, please select a new one!");
+//		}
 		else if ( !password.equals(confirmedPassword) ){
-			Context context = getApplicationContext();
-			CharSequence text = "Password and confirmed password do not match!";
-			int duration = Toast.LENGTH_SHORT;
-			Toast.makeText(context, text, duration).show();
+			toastErrorMsg("Password and confirmed password do not match!");
 		}
 		else{ //everything clears, proceed to insert into database, and proceed to happenins'
 			//create user in database
 			Intent intent = new Intent(this, ViewHappenins.class);
 			startActivity(intent);
 		}
+	}
+	
+	public void toastErrorMsg(String error){
+		Context context = getApplicationContext();
+		CharSequence text = error;
+		int duration = Toast.LENGTH_SHORT;
+		Toast.makeText(context, text, duration).show();
 	}
 }
