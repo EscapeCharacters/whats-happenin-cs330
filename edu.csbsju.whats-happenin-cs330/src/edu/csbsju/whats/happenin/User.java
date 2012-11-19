@@ -47,6 +47,10 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String toString(){
+		return ("Username: " + username + " Name: " + name + " Password: " 
+				+ password + "Email Address: " + emailAddress + "UserID: " + userId);
+	}
 	public enum Status {
 		EMPTY;
 	}
