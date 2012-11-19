@@ -48,7 +48,7 @@ public class CreateNewUser extends Activity{
 		String password = pswdText.getText().toString();
 		
 		EditText cnfmPswdText = (EditText)findViewById(R.id.confirm_new_password);
-		String confirmedPassword = pswdText.getText().toString();
+		String confirmedPassword = cnfmPswdText.getText().toString();
 		
 		EditText emailText = (EditText)findViewById(R.id.new_email);
 		String email = emailText.getText().toString();
@@ -59,7 +59,7 @@ public class CreateNewUser extends Activity{
 		String symbols = "0123456789-+_!@#$%^&*.,?";
 		boolean hasSymbol = false;
 		for(int i = 0; i<password.length();i++){
-			if(symbols.contains(password.charAt(i))){
+			if(symbols.contains(new Character(password.charAt(i)).toString())){
 				hasSymbol = true;
 				break;
 			}
@@ -100,12 +100,12 @@ public class CreateNewUser extends Activity{
 			int duration = Toast.LENGTH_SHORT;
 			Toast.makeText(context, text, duration).show();
 		}
-		/*else if ( !password.equals(confirmedPassword) ){
+		else if ( !password.equals(confirmedPassword) ){
 			Context context = getApplicationContext();
 			CharSequence text = "Password and confirmed password do not match!";
 			int duration = Toast.LENGTH_SHORT;
 			Toast.makeText(context, text, duration).show();
-		}*/
+		}
 		else{ //everything clears, proceed to insert into database, and proceed to happenins'
 			//create user in database
 			Intent intent = new Intent(this, ViewHappenins.class);
