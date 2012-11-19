@@ -37,7 +37,7 @@ public class CreateNewUser extends Activity{
 //	}
 	
 	public void newUser(View view) throws InterruptedException, ExecutionException, TimeoutException{
-		User user;
+		User user = null;
 		EditText nameText = (EditText)findViewById(R.id.new_name);
 		String name = nameText.getText().toString();
 		
@@ -53,16 +53,6 @@ public class CreateNewUser extends Activity{
 		EditText emailText = (EditText)findViewById(R.id.new_email);
 		String email = emailText.getText().toString();
 		
-		
-		user = null;
-//		boolean userTaken = false;
-//		usersList = SQLHelper.getAllUsers();
-//		for(User usr: usersList){
-//			if(usr.getUsername().equals(username){
-//				userTaken = true;
-//				break;
-//			}
-//		}
 		boolean hasFirstAndLast = name.contains(" ");
 		String symbols = "0123456789-+_!@#$%^&*.,?";
 		boolean hasSymbol = false;
@@ -90,22 +80,30 @@ public class CreateNewUser extends Activity{
 		else if( hasSymbol != true ){
 			toastErrorMsg("Password must contain one symbol or number!");
 		}
-//		else if( userTaken != false ){
-//			toastErrorMsg("This username is already taken, please select a new one!");
-//		}
 		else if ( !password.equals(confirmedPassword) ){
 			toastErrorMsg("Password and confirmed password do not match!");
 		}
-		else{ //everything clears, proceed to insert into database, and proceed to happenins'
-			//create user in database
+		else{ //everything clears, proceed to check uniqueness of name, insert into database, and return to login
 			try{
-				//create user in database, and send to login screen
-				toastErrorMsg("Account created! Redirecting to login!");
-				finish();
+				user = SQLHelper.getUserByUsername(username);
 			}
 			catch(Exception e){
-				toastErrorMsg("Was unable to create account within the database.  Please try again later!");
+				toastErrorMsg("Bad connectivity to database.  Please try again later!");
 			}
+			if (user.getUsername() == "emptyUser"){ //username not already within database, unique
+				try{
+					//SQLHelper.createUser(STUFF); //create user in database, and send to login screen
+					toastErrorMsg("Account created! Redirecting to login!");
+					finish();
+				}
+				catch(Exception e){
+					toastErrorMsg("Was unable to create account within the database.  Please try again later!");
+				}
+			}
+			else{
+				toastErrorMsg("Username has been taken, please select a new username.");
+			}
+			
 		}
 	}
 	
