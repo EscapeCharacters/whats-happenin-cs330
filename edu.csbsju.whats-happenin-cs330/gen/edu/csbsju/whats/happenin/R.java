@@ -33,13 +33,14 @@ public final class R {
     }
     public static final class id {
         public static final int commentList=0x7f090000;
-        public static final int create_user=0x7f090010;
+        public static final int confirm_new_password=0x7f09000d;
+        public static final int create_user=0x7f090011;
         public static final int description=0x7f090002;
         public static final int errorMsg=0x7f090009;
         public static final int make_comment=0x7f090005;
-        public static final int menu_settings=0x7f09000f;
-        public static final int mylist=0x7f09000e;
-        public static final int new_email=0x7f09000d;
+        public static final int menu_settings=0x7f090010;
+        public static final int mylist=0x7f09000f;
+        public static final int new_email=0x7f09000e;
         public static final int new_name=0x7f09000a;
         public static final int new_password=0x7f09000c;
         public static final int new_user_button=0x7f090008;
@@ -47,7 +48,7 @@ public final class R {
         public static final int password=0x7f090007;
         public static final int title=0x7f090001;
         public static final int username=0x7f090006;
-        public static final int view_happenins=0x7f090011;
+        public static final int view_happenins=0x7f090012;
         public static final int when=0x7f090003;
         public static final int where=0x7f090004;
     }
@@ -65,6 +66,7 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f060000;
+        public static final int confirm_new_password=0x7f060015;
         public static final int create_email=0x7f060010;
         public static final int create_name=0x7f060012;
         public static final int create_new_user=0x7f06000e;

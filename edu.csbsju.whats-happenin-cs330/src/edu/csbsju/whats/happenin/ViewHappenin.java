@@ -69,7 +69,7 @@ public class ViewHappenin extends Activity {
 			TextView when = new TextView(ViewHappenin.this);
 			when = (TextView)findViewById(R.id.when);
 			
-			title.setText("Error loading data.");
+			title.setText("Error loading data.");  
 			description.setText("Please check your internet connection and try again later.");
 			location.setText("");
 			when.setText("");

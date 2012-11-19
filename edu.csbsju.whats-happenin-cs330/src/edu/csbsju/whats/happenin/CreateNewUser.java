@@ -47,8 +47,12 @@ public class CreateNewUser extends Activity{
 		EditText pswdText = (EditText)findViewById(R.id.new_password);
 		String password = pswdText.getText().toString();
 		
+		EditText cnfmPswdText = (EditText)findViewById(R.id.confirm_new_password);
+		String confirmedPassword = pswdText.getText().toString();
+		
 		EditText emailText = (EditText)findViewById(R.id.new_email);
 		String email = emailText.getText().toString();
+		
 		
 		user = null;
 		boolean hasFirstAndLast = name.contains(" ");
