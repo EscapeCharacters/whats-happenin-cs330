@@ -56,6 +56,14 @@ public class CreateNewUser extends Activity{
 		
 		user = null;
 		boolean hasFirstAndLast = name.contains(" ");
+		String symbols = "0123456789-+_!@#$%^&*.,?";
+		boolean hasSymbol = false;
+		for(int i = 0; i<password.length();i++){
+			if(symbols.contains(password.charAt(i))){
+				hasSymbol = true;
+				break;
+			}
+		}
 		if( name.equals("") || username.equals("") || password.equals("") || email.equals("")){
 			Context context = getApplicationContext();
 			CharSequence text = "Please insure all fields are filled";
@@ -86,6 +94,18 @@ public class CreateNewUser extends Activity{
 			int duration = Toast.LENGTH_SHORT;
 			Toast.makeText(context, text, duration).show();
 		}
+		else if( hasSymbol != true ){
+			Context context = getApplicationContext();
+			CharSequence text = "Password must contain one symbol or number!";
+			int duration = Toast.LENGTH_SHORT;
+			Toast.makeText(context, text, duration).show();
+		}
+		/*else if ( !password.equals(confirmedPassword) ){
+			Context context = getApplicationContext();
+			CharSequence text = "Password and confirmed password do not match!";
+			int duration = Toast.LENGTH_SHORT;
+			Toast.makeText(context, text, duration).show();
+		}*/
 		else{ //everything clears, proceed to insert into database, and proceed to happenins'
 			//create user in database
 			Intent intent = new Intent(this, ViewHappenins.class);
