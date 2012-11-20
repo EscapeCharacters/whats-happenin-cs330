@@ -6,11 +6,10 @@ import java.util.concurrent.TimeoutException;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
@@ -65,6 +64,18 @@ public class Login extends Activity {
 				toastErrorMsg("onnection to What's Happenin' unavailable! Please check your internet connection and try again later!");
 			}
 		}
+	}
+	
+	public void openGitHome(){
+		 Uri uri = Uri.parse("http://escapecharacters.github.com/whats-happenin-cs330/");
+		 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+		 startActivity(intent);
+	}
+	
+	public void openCSBSJUHome(){
+		Uri uri = Uri.parse("https://www.csbsju.edu/Computer-Science.htm");
+		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+		startActivity(intent);
 	}
 	
 	public void toastErrorMsg(String error){

@@ -1,10 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="250dp"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:paddingTop="100dp"
+    android:layout_gravity="center_horizontal"
     android:gravity="center_horizontal"
-    android:layout_gravity="center_horizontal">
+    android:orientation="vertical"
+    android:paddingTop="100dp" >
 
     <EditText
         android:id="@+id/username"
@@ -26,7 +26,7 @@
         android:layout_gravity="right"
         android:onClick="login"
         android:text="@string/login" />
-    
+
     <Button
         android:id="@+id/new_user_button"
         android:layout_width="110dp"
@@ -39,5 +39,29 @@
         android:id="@+id/errorMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <CheckedTextView
+        android:id="@+id/git_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:onClick="openGitHome"
+        android:text="@string/git_home"
+        android:textColor="@color/dark_blue" />
+
+    <CheckedTextView
+        android:id="@+id/csbsju_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:onClick="openCSBSJUHome"
+        android:text="@string/csbsju_home"
+        android:textColor="@color/dark_blue" />
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </TableRow>
 
 </LinearLayout>

@@ -90,7 +90,7 @@ public class CreateNewUser extends Activity{
 			toastErrorMsg("Username already taken.  Please try a new username!");
 		}
 		else{ 
-			//SQLHelper.createUser(username, confirmedPassword, email, name);
+			SQLHelper.createUser(username, confirmedPassword, email, name);
 			Intent i = new Intent(CreateNewUser.this, Login.class);
 			toastErrorMsg("User created!  Please log in.");
 			startActivity(i);
