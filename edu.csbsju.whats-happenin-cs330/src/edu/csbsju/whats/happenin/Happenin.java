@@ -1,9 +1,11 @@
 package edu.csbsju.whats.happenin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.joda.time.DateTime;
+import org.joda.time.Minutes;
 
 import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 
@@ -20,9 +22,11 @@ public class Happenin {
 	private DateTime endTime;
 	private String description;
 	private Double rating;
+	private ArrayList<Rating> ratingsList;
 	private List<Comment> comments;
 	private int id;
 	private Happenin.Status status = Happenin.Status.VALID;
+
 	
 /*
 Standard constructor
@@ -88,17 +92,37 @@ Standard constructor
 	public Happenin.Status getStatus() {
 		return status;
 	}
-	public ArrayList<Rating> getRatings(){
-		return SQLHelper.getRatingsByHappeninId(id);
+	public ArrayList<Rating> getRatingsList(){
+		return ratingsList;
+	}
+	public void setRatingsList(ArrayList<Rating> list){
+		ratingsList = list;
+	}
+	public void updateRatingsList(){
+		ratingsList = SQLHelper.getRatingsByHappeninId(id);
 	}
 	public double getAverageRating(){
-		ArrayList<Rating> ratings = getRatings();
-		int total = 0;
-		for(Rating r : ratings){
-			total += r.getRating();
+		if(getRatingsList() == null)
+			updateRatingsList();
+		ArrayList<Rating> ratings = getRatingsList();
+		double totalWeight = 0;
+		DateTime now = new DateTime();
+		
+		for (Rating r: ratings){
+			Integer staleness = Minutes.minutesBetween(now, r.getRateTime()).getMinutes();
+			double weight = 1.0/staleness; 
+			totalWeight+=weight;
 		}
-		double avg = (double)total/(double)ratings.size();
-		return avg;
+		
+		double weightedTotal = 0;
+		for (Rating r: ratings){
+			Integer staleness = Minutes.minutesBetween(now, r.getRateTime()).getMinutes();
+			double weight = 1.0/staleness;
+			double weightedRanking = weight*r.getRating();
+			weightedTotal += weightedRanking;
+		}
+		
+		return weightedTotal/totalWeight;
 	}
 	
 	public String getTimeString(){
