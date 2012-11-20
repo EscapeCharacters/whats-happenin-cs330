@@ -9,6 +9,11 @@ import java.net.URLConnection;
 
 import android.os.AsyncTask;
 
+/**
+* Gets information from the internet given a URL
+* Create an instance of this class and then call the execute method with the URL in it.
+* Then call getJsonData() method to get the JSON data from the class
+*/
 class RequestTask extends AsyncTask<String, String, String>{
 
 	private String jsonData = "";
