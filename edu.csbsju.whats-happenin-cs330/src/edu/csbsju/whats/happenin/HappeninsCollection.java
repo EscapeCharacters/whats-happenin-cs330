@@ -4,6 +4,13 @@ import java.util.ArrayList;
 
 import org.joda.time.DateTime;
 
+/**
+* Class was used before the database to have some sample Happenins
+* No longer used
+* @author Isaiah Schultz
+* @version 10/15/2012
+*/
+@Deprecated
 public class HappeninsCollection {
 	
 	private ArrayList<Happenin> happenins;
