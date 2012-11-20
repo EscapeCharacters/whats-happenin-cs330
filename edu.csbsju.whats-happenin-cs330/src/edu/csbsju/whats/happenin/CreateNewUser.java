@@ -35,6 +35,10 @@ public class CreateNewUser extends Activity{
 //		return true;
 //	}
 	
+
+/**
+This is the method that handles the creating of a new user when the 'Create' button is pushed
+*/
 	@SuppressWarnings("unused")
 	public void newUser(View view) throws InterruptedException, ExecutionException, TimeoutException{
 		User user = null;
@@ -97,6 +101,9 @@ public class CreateNewUser extends Activity{
 		}
 	}
 	
+/*
+A standard method to create a 'Toast' (popup) error message
+*/
 	public void toastErrorMsg(String error){
 		Context context = getApplicationContext();
 		CharSequence text = error;
