@@ -7,6 +7,11 @@ import org.joda.time.DateTime;
 
 import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 
+/**
+Class that stores a Happenin.  Matches up with everything in the database
+@author Chris Norby
+@version 10/15/2012
+*/
 public class Happenin {
 
 	private String name;
@@ -19,10 +24,16 @@ public class Happenin {
 	private int id;
 	private Happenin.Status status = Happenin.Status.VALID;
 	
+/*
+Standard constructor
+*/
 	public Happenin(){
 		startTime = new DateTime();
 	}
 	
+/**
+* Standard setters and getters
+*/
 	public String getName() {
 		return name;
 	}
@@ -61,9 +72,6 @@ public class Happenin {
 	}
 	public List<Comment> getComments() {
 		return comments;
-	}
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
 	}
 	public String toString() {
 		return getName();
