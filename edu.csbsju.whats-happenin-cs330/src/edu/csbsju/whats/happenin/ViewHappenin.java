@@ -69,11 +69,16 @@ public class ViewHappenin extends Activity {
 			title = (TextView)findViewById(R.id.title);
 			description = (TextView)findViewById(R.id.description);
 			when = (TextView)findViewById(R.id.when);
-
+			TextView ratingField = (TextView)findViewById(R.id.rating);
+			
+			double avg = myHap.getAverageRating();
+			String formattedAverage = String.format("%.1f", avg);
+			
 			title.setText(myHap.getName());
 			description.setText(myHap.getDescription());
 			location.setText(myHap.getLocation());
 			when.setText(myHap.getTimeString());	
+			ratingField.setText("Rating: " + formattedAverage);
 		} else {
 			TextView title = new TextView(ViewHappenin.this), 
 			description = new TextView(ViewHappenin.this);
