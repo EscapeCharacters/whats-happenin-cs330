@@ -2,6 +2,11 @@ package edu.csbsju.whats.happenin;
 
 import org.joda.time.DateTime;
 
+/**
+* Class that matches up with the Rating table in the DB
+* @author Andrew J. Thom
+* @version 11/19/2012
+*/
 public class Rating {
 
 	private int id;
@@ -9,7 +14,9 @@ public class Rating {
 	private int happId;
 	private DateTime rateTime;
 	
-	
+	/**
+	* Below are standard setters and getters
+	*/
 	public int getId() {
 		return id;
 	}
