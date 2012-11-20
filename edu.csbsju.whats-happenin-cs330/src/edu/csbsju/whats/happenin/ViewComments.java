@@ -12,10 +12,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 
+/**
+ * @author EscapeCharacters
+ * This class is used to display the comments associated with an event on the user's screen.
+ */
 public class ViewComments extends Activity {
 	ArrayList<Comment> comments = new ArrayList<Comment>();
 
     @Override
+    /**
+     * When created, will access the database and return an comments associated with happId.
+     * Will then use and Adapter module to display them in a list on the screen.
+     */
     public void onCreate(Bundle savedInstanceState) {
     	Intent i = getIntent();
     	int id = i.getIntExtra("happId", 0);
@@ -55,7 +63,6 @@ public class ViewComments extends Activity {
         /*
          * Adapter for the list to be displayed
          */
-        
         ArrayAdapter<Comment> adapter = 
         		new ArrayAdapter<Comment>
         			(this, android.R.layout.simple_list_item_1, android.R.id.text1, 
@@ -65,6 +72,9 @@ public class ViewComments extends Activity {
     }
 
     @Override
+    /**
+     * Adds the item view_happenins to the menu area
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_view_happenins, menu);
         return true;

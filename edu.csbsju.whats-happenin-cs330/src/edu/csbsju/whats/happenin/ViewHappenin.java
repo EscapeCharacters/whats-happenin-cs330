@@ -11,6 +11,12 @@ import android.view.Window;
 import android.widget.TextView;
 import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 
+/**
+ * 
+ * @author EscapeCharacters
+ * This class is intended to display one happenin, and the info associated with that happenin on the screen.
+ * Will also allow the user to access and display the comment associated with that happenin.
+ */
 public class ViewHappenin extends Activity {
 
 	//private int myHappLoc;
@@ -18,6 +24,9 @@ public class ViewHappenin extends Activity {
 	private HappeninsCollection happsCollection;
 
 	@Override
+	/**
+	 * Will set up the screen to display the specific happenin that a user clicked on.
+	 */
 	protected void onCreate(Bundle savedInstanceState) {
 		//this is gonna need to go, but for now this should work for dummy purposes
 
@@ -37,7 +46,13 @@ public class ViewHappenin extends Activity {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * Sets up the Happenin by accessing the database and returning the info associated with happId.
+	 * @throws InterruptedException
+	 * @throws ExecutionException
+	 * @throws TimeoutException
+	 */
 	private void setupMyHappenin() throws InterruptedException, ExecutionException, TimeoutException{
 		//Get and set the happenin to display
 		Intent myIntent = getIntent();
@@ -85,6 +100,10 @@ public class ViewHappenin extends Activity {
 		ViewHappenin.this.finish();
 	}
 	
+	/**
+	 * A method that send the user to the ViewComments screen.
+	 * @param v
+	 */
 	public void makeComment(View v){
 		Intent i = new Intent(ViewHappenin.this, ViewComments.class);
 		i.putExtra("happId", myHap.getId());

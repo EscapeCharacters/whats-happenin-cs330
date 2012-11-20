@@ -15,12 +15,22 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 
+/**
+ * 
+ * @author EscapeCharacters
+ * This class will create a list of all the happenins currently in the database, and will display them on the screen.
+ * Will also allow a user to selectively choose a single happenin, which will start the new activity ViewHappenin.
+ */
 public class ViewHappenins extends Activity {
 	
 	HappeninsCollection happsCollection = new HappeninsCollection();
 	ArrayList<Happenin> happs = new ArrayList<Happenin>();
 
     @Override
+    /**
+     * Upon creation, will access the database and return all the happenin's within it.  Will then use a list and an adapter to
+     * display all of them on the screen.
+     */
     public void onCreate(Bundle savedInstanceState) {
     	happsCollection.initDummy();
     	
@@ -69,6 +79,9 @@ public class ViewHappenins extends Activity {
     }
 
     @Override
+    /**
+     * This method will add the view_happenins to the menu area.
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_view_happenins, menu);
         return true;
