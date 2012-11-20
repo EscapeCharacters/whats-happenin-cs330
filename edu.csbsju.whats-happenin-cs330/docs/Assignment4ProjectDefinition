@@ -1,0 +1,26 @@
+
+
+The Escape Characters
+
+Project Roles and Responsibilities:
+	- Project Leader - Andrew Thom
+	- Project Data Specialist - Andrew Zurn
+	- Project Programming Specialist - Isaiah Schultz
+	- Project Requirements and Artifacts Specialist - Chris Norby
+
+Project definition:
+	A social location/event app that will act as a weekend planner for Johnnies and Bennies
+
+Project description:
+	Our project will be to create an application for Android devices that allows users to share their location with others.  They can post comments to inform others on attendance and atmosphere at events at Saint John's, Saint Ben's, and in the community.  Users will be able to reply with their own comments.  This would be a sort of weekend planner for CSB/SJU students.  They will be able to find events and share their weekend plans with each other.  They would also be able to check the up to the minute status of where their friends are at.  We would also group together comments of the same topic so people would be able to see what's "hoppin'" on campus or in town. 
+
+High level requirements
+	- Ranking system - Add a ranking
+					 - view an aggregate ranking
+					 - rankings go stale - algorithm that weights the ranks based on the amount of time they've been in the system
+	- Comments - add / view them
+	- Events________
+					`----------- merge into some sort of abstraction
+	- Locations_____/			 add and view both events and locations
+	- Users - basic profile information (name) - used to post and view 
+	

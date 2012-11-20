@@ -40,23 +40,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <CheckedTextView
-        android:id="@+id/git_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:onClick="openGitHome"
-        android:text="@string/git_home"
-        android:textColor="@color/dark_blue" />
+<!--     <CheckedTextView -->
+<!--         android:id="@+id/git_home" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:gravity="center_horizontal" -->
+<!--         android:onClick="openGitHome" -->
+<!--         android:text="@string/git_home" -->
+<!--         android:textColor="@color/dark_blue" /> -->
 
-    <CheckedTextView
-        android:id="@+id/csbsju_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:onClick="openCSBSJUHome"
-        android:text="@string/csbsju_home"
-        android:textColor="@color/dark_blue" />
+<!--     <CheckedTextView -->
+<!--         android:id="@+id/csbsju_home" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:gravity="center_horizontal" -->
+<!--         android:onClick="openCSBSJUHome" -->
+<!--         android:text="@string/csbsju_home" -->
+<!--         android:textColor="@color/dark_blue" />  -->
 
     <TableRow
         android:id="@+id/tableRow1"
