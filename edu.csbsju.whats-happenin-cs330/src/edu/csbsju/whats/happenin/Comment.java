@@ -4,6 +4,11 @@ import org.joda.time.DateTime;
 
 import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 
+/**
+* This class stores all the information about a comment.  It matches up with the comment table in the DB
+* @author Andrew J. Thom
+* @version 11/07/2012
+*/
 public class Comment {
 
 	private String comment;
