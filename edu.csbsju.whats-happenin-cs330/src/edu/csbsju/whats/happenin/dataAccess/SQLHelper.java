@@ -18,7 +18,7 @@ import edu.csbsju.whats.happenin.User;
 
 public class SQLHelper {
 
-
+	/** Gets a user given a username */
 	public static User getUserByUsername(String username) throws InterruptedException, ExecutionException, TimeoutException{
 		User user = null;
 		RequestTask task = new RequestTask();
@@ -51,6 +51,7 @@ public class SQLHelper {
 
 	}
 	
+	/** Gets a user given an ID number */
 	public static User getUserById(int id) {
 		User user = null;
 		RequestTask task = new RequestTask();
@@ -90,6 +91,7 @@ public class SQLHelper {
 
 	}
 
+	/** Gets an ArrayList of Happenins */
 	public static ArrayList<Happenin> getHappenins() throws InterruptedException, ExecutionException, TimeoutException{
 		Happenin happ = null;
 		ArrayList<Happenin> happenins = null;
@@ -119,6 +121,7 @@ public class SQLHelper {
 		return happenins;
 	}
 	
+	/** Gets a single happenin given a Happenin ID */
 	public static Happenin getHappeninById(int happId){
 		Happenin happ = null;
 		RequestTask task = new RequestTask();
@@ -161,6 +164,7 @@ public class SQLHelper {
 		return happ;
 	}
 	
+	/** Gets a list of comments for a given happenin ID */
 	public static ArrayList<Comment> getCommentsByHappeninId(int id) throws InterruptedException, ExecutionException, TimeoutException{
 		Comment comment = null;
 		ArrayList<Comment> comments = null;
@@ -195,6 +199,7 @@ public class SQLHelper {
 		return comments;
 	}
 	
+	/** Gets an ArrayList of Ratings for a given happenin ID */
 	public static ArrayList<Rating> getRatingsByHappeninId(int id) {
 		Rating rating = null;
 		ArrayList<Rating> ratings = null;
@@ -235,18 +240,21 @@ public class SQLHelper {
 		return ratings;
 	}
 	
+	/** Inserts a comment */
 	public static void insertComment(int userId, int happId, String comment){
 		RequestTask task = new RequestTask();
 		String fixedComment = comment.replaceAll(" ", "+");
 		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/insertComment.php?happid="+happId+"&comment="+fixedComment+"&userId="+userId);
 	}
 	
+	/** Inserts a new user */
 	public static void createUser(String username, String password, String email, String name){
 		RequestTask task = new RequestTask();
 		String fixedName = name.replaceAll(" ", "+");
 		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/userCreate.php?name="+fixedName+"&password="+password+"&email="+email+"&username="+username);
 	}
 	
+	/** This parses the MySQL DATETIME string into a DateTime object in Java */
 	public static DateTime parseMySqlDate(String dateString){
 		String[] split1 = dateString.split(" ");//Separates the Date and Time
 		String date = split1[0];
