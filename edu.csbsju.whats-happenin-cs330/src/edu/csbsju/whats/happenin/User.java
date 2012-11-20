@@ -1,7 +1,13 @@
 package edu.csbsju.whats.happenin;
 
+/**
+* User class that has all the information about a user
+* @author EscapeCharacters
+* @version 11/19/2012
+*/
 public class User {
 
+	// Private fields
 	private String username;
 	private String password;
 	private int userId;
@@ -18,6 +24,9 @@ public class User {
 		this.emailAddress = email;
 	}
 	
+	/**
+	* Below are the standard setters and getters
+	*/ 
 	public String getUsername() {
 		return username;
 	}
@@ -59,6 +68,9 @@ public class User {
 	public User.Status getStatus() {
 		return status;
 	}
+	/**
+	* Used if the user is an empty one
+	*/
 	public enum Status {
 		EMPTY;
 	}
