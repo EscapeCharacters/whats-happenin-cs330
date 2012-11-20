@@ -7,6 +7,7 @@ public class User {
 	private int userId;
 	private String emailAddress;
 	private String name;
+	private User.Status status;
 	
 	public User(){}
 	
@@ -50,6 +51,13 @@ public class User {
 	public String toString(){
 		return ("Username: " + username + " Name: " + name + " Password: " 
 				+ password + "Email Address: " + emailAddress + "UserID: " + userId);
+	}
+	public void setStatus(User.Status status) {
+		this.status = status;
+	}
+
+	public User.Status getStatus() {
+		return status;
 	}
 	public enum Status {
 		EMPTY;

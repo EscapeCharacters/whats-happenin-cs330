@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import android.net.ParseException;
 import edu.csbsju.whats.happenin.Comment;
 import edu.csbsju.whats.happenin.Happenin;
+import edu.csbsju.whats.happenin.Rating;
 import edu.csbsju.whats.happenin.User;
 
 public class SQLHelper {
@@ -41,6 +42,10 @@ public class SQLHelper {
 
 		} catch (ParseException e1) {
 
+		}
+		if(user == null){
+			user = new User();
+			user.setStatus(User.Status.EMPTY);
 		}
 		return user;
 
@@ -190,9 +195,56 @@ public class SQLHelper {
 		return comments;
 	}
 	
+	public static ArrayList<Rating> getRatingsByHappeninId(int id) {
+		Rating rating = null;
+		ArrayList<Rating> ratings = null;
+		RequestTask task = new RequestTask();
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/ratingsByHappenin.php?happId="+id);
+		try {
+			task.get(2000, TimeUnit.MILLISECONDS);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TimeoutException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String result = task.getJsonData();
+		try{
+			ratings = new ArrayList<Rating>();
+			JSONArray jArray = new JSONArray(result);
+			JSONObject json_data=null;
+			for(int i=0;i<jArray.length(); i++) {
+				json_data = jArray.getJSONObject(i);
+				rating = new Rating();
+				rating.setHappId(json_data.getInt("happId"));
+				rating.setRating(json_data.getInt("rating"));
+				rating.setId(json_data.getInt("id"));
+				rating.setRateTime(parseMySqlDate(json_data.getString("rateTime")));
+				ratings.add(rating);
+			}
+		}
+		catch(JSONException e1){
+
+		} catch (ParseException e1) {
+
+		}
+		return ratings;
+	}
+	
 	public static void insertComment(int userId, int happId, String comment){
 		RequestTask task = new RequestTask();
-		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/insertComment.php?happid="+happId+"&comment="+comment);
+		String fixedComment = comment.replaceAll(" ", "+");
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/insertComment.php?happid="+happId+"&comment="+fixedComment+"&userId="+userId);
+	}
+	
+	public static void createUser(String username, String password, String email, String name){
+		RequestTask task = new RequestTask();
+		String fixedName = name.replaceAll(" ", "+");
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/userCreate.php?name="+fixedName+"&password="+password+"&email="+email+"&username="+username);
 	}
 	
 	public static DateTime parseMySqlDate(String dateString){

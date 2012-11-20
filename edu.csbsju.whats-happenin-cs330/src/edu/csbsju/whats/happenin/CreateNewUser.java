@@ -12,7 +12,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -36,6 +35,7 @@ public class CreateNewUser extends Activity{
 //		return true;
 //	}
 	
+	@SuppressWarnings("unused")
 	public void newUser(View view) throws InterruptedException, ExecutionException, TimeoutException{
 		User user = null;
 		EditText nameText = (EditText)findViewById(R.id.new_name);
@@ -52,7 +52,10 @@ public class CreateNewUser extends Activity{
 		
 		EditText emailText = (EditText)findViewById(R.id.new_email);
 		String email = emailText.getText().toString();
-		
+
+		user = null;
+		boolean userTaken = false;
+		user = SQLHelper.getUserByUsername(username);
 		boolean hasFirstAndLast = name.contains(" ");
 		String symbols = "0123456789-+_!@#$%^&*.,?";
 		boolean hasSymbol = false;
@@ -82,28 +85,15 @@ public class CreateNewUser extends Activity{
 		}
 		else if ( !password.equals(confirmedPassword) ){
 			toastErrorMsg("Password and confirmed password do not match!");
+		} 
+		else if (user.getStatus() != User.Status.EMPTY) {
+			toastErrorMsg("Username already taken.  Please try a new username!");
 		}
-		else{ //everything clears, proceed to check uniqueness of name, insert into database, and return to login
-			try{
-				user = SQLHelper.getUserByUsername(username);
-			}
-			catch(Exception e){
-				toastErrorMsg("Bad connectivity to database.  Please try again later!");
-			}
-			if (user.getUsername() == "emptyUser"){ //username not already within database, unique
-				try{
-					//SQLHelper.createUser(STUFF); //create user in database, and send to login screen
-					toastErrorMsg("Account created! Redirecting to login!");
-					finish();
-				}
-				catch(Exception e){
-					toastErrorMsg("Was unable to create account within the database.  Please try again later!");
-				}
-			}
-			else{
-				toastErrorMsg("Username has been taken, please select a new username.");
-			}
-			
+		else{ 
+			//SQLHelper.createUser(username, confirmedPassword, email, name);
+			Intent i = new Intent(CreateNewUser.this, Login.class);
+			toastErrorMsg("User created!  Please log in.");
+			startActivity(i);
 		}
 	}
 	

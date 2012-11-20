@@ -22,6 +22,7 @@
     <string name="create_username">enter username</string>
     <string name="create_user_title">create user</string>
     <string name="confirm_new_password">confirm password</string>
+    <string name="happenin_rating">rating?</string>
     
 
 </resources>

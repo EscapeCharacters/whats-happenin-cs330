@@ -1,8 +1,11 @@
 package edu.csbsju.whats.happenin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.joda.time.DateTime;
+
+import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 
 public class Happenin {
 
@@ -76,6 +79,18 @@ public class Happenin {
 	}
 	public Happenin.Status getStatus() {
 		return status;
+	}
+	public ArrayList<Rating> getRatings(){
+		return SQLHelper.getRatingsByHappeninId(id);
+	}
+	public double getAverageRating(){
+		ArrayList<Rating> ratings = getRatings();
+		int total = 0;
+		for(Rating r : ratings){
+			total += r.getRating();
+		}
+		double avg = (double)total/(double)ratings.size();
+		return avg;
 	}
 	
 	public String getTimeString(){
