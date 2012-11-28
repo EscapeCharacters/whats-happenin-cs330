@@ -37,7 +37,8 @@ public class ViewHappenin extends Activity {
 		
 		Intent intent = getIntent();
     	userID=intent.getIntExtra("userID", 0);
-    	toastLong(""+userID);
+    	//debugging
+    	//toastLong(""+userID);
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_happenin_dialog);

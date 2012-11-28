@@ -36,7 +36,8 @@ public class ViewComments extends Activity {
     	myHappeninID = i.getIntExtra("happId", 0);
     	userID = i.getIntExtra("userID", 0);
     	
-    	toastLong(""+userID);
+    	//debugging
+    	//toastLong(""+userID);
     	
 		try {
 			comments = SQLHelper.getCommentsByHappeninId(myHappeninID);

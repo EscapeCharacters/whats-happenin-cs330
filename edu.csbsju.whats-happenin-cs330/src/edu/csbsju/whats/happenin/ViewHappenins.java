@@ -40,7 +40,8 @@ public class ViewHappenins extends Activity {
     	Intent intent = getIntent();
     	userID=intent.getIntExtra("userID", 0);
     	
-    	toastLong(""+userID);
+    	//debugging
+    	//toastLong(""+userID);
     	
 		try {
 			happs = SQLHelper.getHappenins();

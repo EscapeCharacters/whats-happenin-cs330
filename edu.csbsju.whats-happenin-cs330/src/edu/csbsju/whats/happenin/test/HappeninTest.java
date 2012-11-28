@@ -91,4 +91,49 @@ public class HappeninTest extends AndroidTestCase{
 		
 	}
 
+	public void testGetTimeString(){
+		
+		Happenin hap1 = new Happenin();
+		DateTime now = new DateTime();
+		DateTime twoDaysAgo = now.minusDays(2);
+		hap1.setStartTime(twoDaysAgo);
+		hap1.setEndTime(now);
+		
+		String time1 = hap1.getTimeString();
+		int num1 = numberOfDaysInString(time1);
+		assertEquals("Event spanning 2 days should have more than one day of the week in the date string", 2, num1);
+		
+		Happenin hap2 = new Happenin();
+		DateTime twoMinutesAgo = now.minusMinutes(2);
+		hap2.setStartTime(twoMinutesAgo);
+		hap2.setEndTime(now);
+		
+		String time2 = hap2.getTimeString();
+		int num2 = numberOfDaysInString(time2);
+		//note - don't run this test between midnight and 12:02
+		assertEquals("Event spanning 2 minutes should only have one day of the week in the date string", 1, num2);
+	}
+	
+	private int numberOfDaysInString(String dateString){
+		ArrayList<String> daysOfWeek = new ArrayList<String>();
+		daysOfWeek.add("Mon");
+		daysOfWeek.add("Tue");
+		daysOfWeek.add("Wed");
+		daysOfWeek.add("Thu");
+		daysOfWeek.add("Fri");
+		daysOfWeek.add("Sat");
+		daysOfWeek.add("Sun");
+		
+		int count = 0;
+		
+		for(int i=0; i<dateString.length()-4; i++){
+			String threeChars = dateString.substring(i, i+3);
+			for(String day : daysOfWeek){
+				if(threeChars.equalsIgnoreCase(day))
+					count++;
+			}
+		}
+		
+		return count;
+	}
 }
