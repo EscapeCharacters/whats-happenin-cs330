@@ -131,9 +131,12 @@ Standard constructor
 		String startMinute = startTime.minuteOfHour().getAsText();
 		String endHour = endTime.hourOfDay().getAsText();
 		String endMinute = endTime.minuteOfHour().getAsText();
-		String dayOfWeek = startTime.dayOfWeek().getAsShortText();
-		int month = startTime.monthOfYear().get();
-		int day = startTime.dayOfMonth().get();
+		String startDayOfWeek = startTime.dayOfWeek().getAsShortText();
+		String endDayOfWeek = endTime.dayOfWeek().getAsShortText();
+		int startMonth = startTime.monthOfYear().get();
+		int endMonth = endTime.monthOfYear().get();
+		int startDay = startTime.dayOfMonth().get();
+		int endDay = endTime.dayOfMonth().get();
 		
 		//converts start time from military time to 12 hour time
 		String startAmPm = "am";
@@ -168,17 +171,27 @@ Standard constructor
 
 		
 		//builds the string
-		sb.append(dayOfWeek);
+		sb.append(startDayOfWeek);
 		sb.append(". ");
-		sb.append(month);
+		sb.append(startMonth);
 		sb.append("/");
-		sb.append(day);
+		sb.append(startDay);
 		sb.append(" ");
 		sb.append(startHour);
 		sb.append(":");
 		sb.append(startMinute);
 		sb.append(startAmPm);
 		sb.append(" to ");
+		
+		if(!(startMonth==endMonth&&startDay==endDay)){
+			sb.append(endDayOfWeek);
+			sb.append(". ");
+			sb.append(endMonth);
+			sb.append("/");
+			sb.append(endDay);
+			sb.append(" ");
+		}
+		
 		sb.append(endHour);
 		sb.append(":");
 		sb.append(endMinute);
