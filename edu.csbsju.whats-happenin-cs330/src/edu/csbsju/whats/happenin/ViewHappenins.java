@@ -5,6 +5,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 
 /**
@@ -25,6 +27,8 @@ public class ViewHappenins extends Activity {
 	
 	HappeninsCollection happsCollection = new HappeninsCollection();
 	ArrayList<Happenin> happs = new ArrayList<Happenin>();
+	
+	private int userID;
 
     @Override
     /**
@@ -33,6 +37,10 @@ public class ViewHappenins extends Activity {
      */
     public void onCreate(Bundle savedInstanceState) {
     	happsCollection.initDummy();
+    	Intent intent = getIntent();
+    	userID=intent.getIntExtra("userID", 0);
+    	
+    	toastLong(""+userID);
     	
 		try {
 			happs = SQLHelper.getHappenins();
@@ -61,6 +69,7 @@ public class ViewHappenins extends Activity {
                 Intent i = new Intent(ViewHappenins.this, ViewHappenin.class);
                 i.putExtra("clicked", position);
                 i.putExtra("happId", happs.get(position).getId());
+                i.putExtra("userID", userID);
                 startActivity(i);
             }
         });
@@ -75,8 +84,14 @@ public class ViewHappenins extends Activity {
         			(this, android.R.layout.simple_list_item_1, android.R.id.text1, 
         			happs);
         listView.setAdapter(adapter);
-        
     }
+    
+    public void toastLong(String message){
+		Context context = getApplicationContext();
+		CharSequence text = message;
+		int duration = Toast.LENGTH_LONG;
+		Toast.makeText(context, text, duration).show();
+	}
 
     @Override
     /**

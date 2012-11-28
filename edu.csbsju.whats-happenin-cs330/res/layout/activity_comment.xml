@@ -1,8 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/commentList"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    
 
-</ListView>
+<!-- For more info on the sliding drawer thing: 
+http://androidcookbook.com/Recipe.seam;jsessionid=DDEB4D265C9B95E1617E3FC126647FB2?recipeId=2144 -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/spacer"
+        style="@style/DrawerButton"
+        android:layout_alignParentBottom="true"
+        android:text="" />
+
+    <ListView
+        android:id="@+id/commentList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/spacer"
+        android:orientation="vertical" >
+    </ListView>
+
+    <SlidingDrawer
+        android:id="@+id/drawer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:content="@+id/drawer_content"
+        android:handle="@+id/drawer_button" >
+
+        <TextView
+            android:id="@id/drawer_button"
+            style="@style/DrawerButton"
+            android:gravity="right|center_vertical"
+            android:text="@string/make_comment" >
+        </TextView>
+
+        <LinearLayout
+            android:id="@+id/drawer_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#eeffffff" 
+            android:orientation="horizontal">
+            
+            <EditText
+                android:id="@+id/comment"
+                android:minHeight="80dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/comment"
+                android:inputType="textMultiLine"
+                android:paddingTop="10dp"
+                android:layout_weight="7"
+                />
+            <Button 
+                android:id="@+id/post_comment"
+                android:layout_width="wrap_content"	
+                android:layout_height="wrap_content"
+                android:text="@string/post"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:onClick="postComment"/>
+            
+        </LinearLayout>
+    </SlidingDrawer>
+
+</RelativeLayout>

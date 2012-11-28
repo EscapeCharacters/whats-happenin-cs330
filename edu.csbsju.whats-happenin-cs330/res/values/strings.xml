@@ -12,7 +12,10 @@
     <string name="happenin_description"></string>
     <string name="happenin_when">when?</string>
     <string name="happenin_where">where?</string>
-    <string name="make_comment">View Comments</string>
+    <string name="comment">Your comment here...</string>
+    <string name="view_comments">Comments</string>
+    <string name="make_comment">Post a comment</string>
+    <string name="post">Post</string>
     <string name="view_comments_title">Comments</string>
     <string name="create_new_user">new user</string>
     <string name="create_user">create</string>

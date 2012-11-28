@@ -25,7 +25,20 @@ public class Login extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		
+		//makes debugging simpler:////////////////////////////////
+		Intent intent = new Intent(this, ViewHappenins.class);	//
+		intent.putExtra("userID", 16);							//
+		toastErrorMsg("Auto-logged in to Debug User");			//
+		startActivity(intent);									//
+		//////////////////////////////////////////////////////////	
+		//ABOUT "Debug User"////////////////////////////////////////////////////
+		//user_id	|	name		|email						|	username  //
+		//16		|	Debug User	|notrealemail@csbsju.edu	|	debug     //
+		////////////////////////////////////////////////////////////////////////
 	}
+	
+	
 	
 
 	@Override
@@ -68,6 +81,8 @@ public class Login extends Activity {
 				//If good, then it logs you in
 				else if(password.equals(user.getPassword()) && username.equals(user.getUsername())){
 					Intent intent = new Intent(this, ViewHappenins.class);
+					intent.putExtra("userID", user.getUserId());
+					toastShort("Welcome, "+ user.getName());
 					startActivity(intent);
 				} 
 				// If not good, then provides error message
@@ -77,6 +92,11 @@ public class Login extends Activity {
 			} catch(Exception e){
 				// This is executed if internet connection is unavailable
 				toastErrorMsg("Connection to What's Happenin' unavailable! Please check your internet connection and try again later!");
+				
+				//more debugging stuff//////////
+				toastErrorMsg("Debug:\n"+e.toString());  //
+				////////////////////////////////
+			
 			}
 		}
 	}
@@ -93,13 +113,23 @@ public class Login extends Activity {
 //		startActivity(intent);
 //	}
 	
+	public void toastShort(String message){
+		Context context = getApplicationContext();
+		CharSequence text = message;
+		int duration = Toast.LENGTH_SHORT;
+		Toast.makeText(context, text, duration).show();
+	}
+
+
+
+
 	/**
 	* Helper method to create a 'Toast'
 	*/
 	public void toastErrorMsg(String error){
 		Context context = getApplicationContext();
 		CharSequence text = error;
-		int duration = Toast.LENGTH_SHORT;
+		int duration = Toast.LENGTH_LONG;
 		Toast.makeText(context, text, duration).show();
 	}
 }

@@ -4,11 +4,13 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
 import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 
 /**
@@ -22,6 +24,7 @@ public class ViewHappenin extends Activity {
 	//private int myHappLoc;
 	private Happenin myHap;
 	private HappeninsCollection happsCollection;
+	private int userID;
 
 	@Override
 	/**
@@ -31,6 +34,11 @@ public class ViewHappenin extends Activity {
 		//this is gonna need to go, but for now this should work for dummy purposes
 
 		super.onCreate(savedInstanceState);
+		
+		Intent intent = getIntent();
+    	userID=intent.getIntExtra("userID", 0);
+    	toastLong(""+userID);
+		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_happenin_dialog);
 		try {
@@ -96,6 +104,13 @@ public class ViewHappenin extends Activity {
 		}
 			
 	}
+	
+	public void toastLong(String message){
+		Context context = getApplicationContext();
+		CharSequence text = message;
+		int duration = Toast.LENGTH_LONG;
+		Toast.makeText(context, text, duration).show();
+	}
 
 	/**
 	 * Callback method defined by the View
@@ -109,9 +124,10 @@ public class ViewHappenin extends Activity {
 	 * A method that send the user to the ViewComments screen.
 	 * @param v
 	 */
-	public void makeComment(View v){
+	public void viewComments(View v){
 		Intent i = new Intent(ViewHappenin.this, ViewComments.class);
 		i.putExtra("happId", myHap.getId());
+		i.putExtra("userID", userID);
         startActivity(i);
 	}
 	

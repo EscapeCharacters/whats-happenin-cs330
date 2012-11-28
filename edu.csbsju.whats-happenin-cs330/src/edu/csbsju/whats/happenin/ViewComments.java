@@ -5,12 +5,18 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SlidingDrawer;
+import android.widget.Toast;
 import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
+import android.view.inputmethod.InputMethodManager;
 
 /**
  * @author EscapeCharacters
@@ -18,6 +24,7 @@ import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
  */
 public class ViewComments extends Activity {
 	ArrayList<Comment> comments = new ArrayList<Comment>();
+	int myHappeninID, userID;
 
     @Override
     /**
@@ -26,10 +33,13 @@ public class ViewComments extends Activity {
      */
     public void onCreate(Bundle savedInstanceState) {
     	Intent i = getIntent();
-    	int id = i.getIntExtra("happId", 0);
+    	myHappeninID = i.getIntExtra("happId", 0);
+    	userID = i.getIntExtra("userID", 0);
+    	
+    	toastLong(""+userID);
     	
 		try {
-			comments = SQLHelper.getCommentsByHappeninId(id);
+			comments = SQLHelper.getCommentsByHappeninId(myHappeninID);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -67,9 +77,57 @@ public class ViewComments extends Activity {
         		new ArrayAdapter<Comment>
         			(this, android.R.layout.simple_list_item_1, android.R.id.text1, 
         			comments);
-        listView.setAdapter(adapter);
-        
+        listView.setAdapter(adapter);    
     }
+    
+    public void postComment(View view) {
+		EditText commentET = (EditText)findViewById(R.id.comment);
+		String comment = commentET.getText().toString(); 
+
+		if (comment.length() != 0) {
+			try {
+				SQLHelper.insertComment(userID, myHappeninID, comment);
+				closeKeyboard();
+				closeMakeCommentDrawer();
+				toastShort("Comment posted");
+				commentET.setText("");
+			}
+			catch(Exception e) {
+				toastLong("Debug: "+e.toString());
+			}
+		}
+	}
+
+	public void openMakeCommentDrawer(){
+		SlidingDrawer drawer = (SlidingDrawer) findViewById(R.id.drawer);
+		drawer.animateOpen();
+	}
+
+	public void closeMakeCommentDrawer(){
+		SlidingDrawer drawer = (SlidingDrawer) findViewById(R.id.drawer);
+		drawer.animateClose();
+	}
+
+	public void closeKeyboard(){
+		InputMethodManager inputManager = (InputMethodManager)
+				getSystemService(Context.INPUT_METHOD_SERVICE); 
+		inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+				InputMethodManager.HIDE_NOT_ALWAYS);
+	}
+
+	public void toastShort(String message){
+		Context context = getApplicationContext();
+		CharSequence text = message;
+		int duration = Toast.LENGTH_SHORT;
+		Toast.makeText(context, text, duration).show();
+	}
+
+	public void toastLong(String message){
+		Context context = getApplicationContext();
+		CharSequence text = message;
+		int duration = Toast.LENGTH_LONG;
+		Toast.makeText(context, text, duration).show();
+	}
 
     @Override
     /**
