@@ -18,7 +18,14 @@ import edu.csbsju.whats.happenin.User;
 
 public class SQLHelper {
 
-	/** Gets a user given a username */
+	/**
+	 * Gets a user by a username
+	 * @param username The username of the user you want to return
+	 * @return The user who is being returned
+	 * @throws InterruptedException Thrown when there is a problem with the internet connection
+	 * @throws ExecutionException Thrown when there is a problem with the internet connection
+	 * @throws TimeoutException Thrown when there is a problem with the internet connection
+	 */
 	public static User getUserByUsername(String username) throws InterruptedException, ExecutionException, TimeoutException{
 		User user = null;
 		RequestTask task = new RequestTask();
@@ -51,7 +58,11 @@ public class SQLHelper {
 
 	}
 	
-	/** Gets a user given an ID number */
+	/**
+	 * Gets a user given an ID number
+	 * @param id The user ID of the user desired
+	 * @return The User object for the USER id, with status EMPTY if the user ID doesn't exist
+	 */
 	public static User getUserById(int id) {
 		User user = null;
 		RequestTask task = new RequestTask();
@@ -91,7 +102,13 @@ public class SQLHelper {
 
 	}
 
-	/** Gets an ArrayList of Happenins */
+	/**
+	 * Gets the list of happenins
+	 * @return An ArrayList of upcoming Happenins
+	 * @throws InterruptedException Thrown when there is a problem with the internet connection
+	 * @throws ExecutionException Thrown when there is a problem with the internet connection
+	 * @throws TimeoutException Thrown when there is a problem with the internet connection
+	 */
 	public static ArrayList<Happenin> getHappenins() throws InterruptedException, ExecutionException, TimeoutException{
 		Happenin happ = null;
 		ArrayList<Happenin> happenins = null;
@@ -121,7 +138,12 @@ public class SQLHelper {
 		return happenins;
 	}
 	
-	/** Gets a single happenin given a Happenin ID */
+	/**
+	 * Gets a happenin given a happenin ID
+	 * @param happId The ID of the happenin desired
+	 * @return The Happenin corresponding to the ID given, or a Happenin with Status
+	 * EMPTY if the 
+	 */
 	public static Happenin getHappeninById(int happId){
 		Happenin happ = null;
 		RequestTask task = new RequestTask();
@@ -192,9 +214,9 @@ public class SQLHelper {
 
 		}
 		if (comments.size() == 0){
-			Comment c = new Comment();
-			c.setComment("No comments yet");
-			comments.add(c);
+			comment = new Comment();
+			comment.setComment("No comments yet");
+			comments.add(comment);
 		}
 		return comments;
 	}
