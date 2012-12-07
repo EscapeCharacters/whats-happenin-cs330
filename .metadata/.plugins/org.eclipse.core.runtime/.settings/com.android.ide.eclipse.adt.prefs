@@ -1,0 +1,4 @@
+com.android.ide.eclipse.adt.fixLegacyEditors=1
+com.android.ide.eclipse.adt.sdk=/opt/eclipse-java-4.2.0/plugins/android-sdk-linux
+design.palette.flyout.width=172
+eclipse.preferences.version=1

@@ -17,6 +17,7 @@
     <string name="make_comment">Post a comment</string>
     <string name="post">Post</string>
     <string name="view_comments_title">Comments</string>
+<<<<<<< HEAD
     <string name="create_new_user">new user</string>
     <string name="create_user">create</string>
     <string name="create_email">CSB/SJU email</string>
@@ -28,6 +29,9 @@
     <string name="happenin_rating">rating?</string>
     <string name="git_home">Visit Our Homepage!</string>
     <string name="csbsju_home">Visit the CSBSJU Homepage!</string>
+=======
+    <string name="new_user">New User?</string>
+>>>>>>> ae3ffe7e9a956656003c725eaeab2d9b46fa37a8
     
 
 </resources>
