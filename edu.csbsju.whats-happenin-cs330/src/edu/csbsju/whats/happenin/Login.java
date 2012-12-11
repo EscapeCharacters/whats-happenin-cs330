@@ -27,14 +27,14 @@ public class Login extends Activity {
 		setContentView(R.layout.activity_login);
 		
 		//makes debugging simpler:////////////////////////////////
-		Intent intent = new Intent(this, ViewHappenins.class);	//
-		intent.putExtra("userID", 16);							//
-		toastErrorMsg("Auto-logged in to Debug User");			//
-		startActivity(intent);									//
+		Intent intent = new Intent(this, ViewHappenins.class);
+		intent.putExtra("userID", 16);
+		toastErrorMsg("Auto-logged in to Debug User");
+		startActivity(intent);
 		//////////////////////////////////////////////////////////	
 		//ABOUT "Debug User"////////////////////////////////////////////////////
-		//user_id	|	name		|email						|	username  //
-		//16		|	Debug User	|notrealemail@csbsju.edu	|	debug     //
+		//user_id	|	name		|email						|	username  
+		//16		|	Debug User	|notrealemail@csbsju.edu	|	debug     
 		////////////////////////////////////////////////////////////////////////
 	}
 	

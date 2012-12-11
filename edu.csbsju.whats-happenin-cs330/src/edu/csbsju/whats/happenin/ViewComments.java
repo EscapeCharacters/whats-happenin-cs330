@@ -100,12 +100,12 @@ public class ViewComments extends Activity {
 	}
 
 	public void openMakeCommentDrawer(){
-		SlidingDrawer drawer = (SlidingDrawer) findViewById(R.id.drawer);
+		SlidingDrawer drawer = (SlidingDrawer) findViewById(R.id.comment_drawer);
 		drawer.animateOpen();
 	}
 
 	public void closeMakeCommentDrawer(){
-		SlidingDrawer drawer = (SlidingDrawer) findViewById(R.id.drawer);
+		SlidingDrawer drawer = (SlidingDrawer) findViewById(R.id.comment_drawer);
 		drawer.animateClose();
 	}
 

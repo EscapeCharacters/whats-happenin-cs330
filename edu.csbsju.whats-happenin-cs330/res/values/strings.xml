@@ -28,6 +28,10 @@
     <string name="happenin_rating">rating?</string>
     <string name="git_home">Visit Our Homepage!</string>
     <string name="csbsju_home">Visit the CSBSJU Homepage!</string>
+    <string name="new_happenin_title">Give your new Happnein a title</string>
+    <string name="new_happenin_description">Now give us some details</string>
+    <string name="new_happenin_location">Location</string>
+    <string name="create_happenin">Create a new Happenin</string>
     
 
 </resources>

@@ -1,8 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/mylist"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
-</ListView>
+    <TextView
+        android:id="@+id/spacer"
+        style="@style/DrawerButton"
+        android:layout_alignParentBottom="true"
+        android:text="" />
+
+    <ListView
+        android:id="@+id/mylist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/spacer"
+        android:orientation="vertical" />
+
+    <SlidingDrawer
+        android:id="@+id/happenin_drawer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:content="@+id/happenin_drawer_content"
+        android:handle="@+id/happenin_drawer_button" >
+
+        <TextView
+            android:id="@id/happenin_drawer_button"
+            style="@style/DrawerButton"
+            android:gravity="right|center_vertical"
+            android:text="@string/create_happenin" />
+
+        <LinearLayout
+            android:id="@+id/happenin_drawer_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#eeffffff"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/new_happenin_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/new_happenin_title"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/new_happenin_location"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/new_happenin_location"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/new_happenin_description"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/new_happenin_description"
+                android:inputType="textMultiLine" />
+        </LinearLayout>
+    </SlidingDrawer>
+
+</RelativeLayout>

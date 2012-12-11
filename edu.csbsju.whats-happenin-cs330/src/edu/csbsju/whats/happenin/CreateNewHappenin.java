@@ -25,7 +25,7 @@ public class CreateNewHappenin extends Activity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_new_user);
+		setContentView(R.layout.activity_create_happenin);
 	}
 	
 	
@@ -38,11 +38,11 @@ public class CreateNewHappenin extends Activity{
 		public void newHappenin(View view) throws InterruptedException, ExecutionException, TimeoutException{
 			Happenin happenin = null;
 			String name = "";
-			EditText nameText = (EditText)findViewById(R.id.newHappenin_name);
+			EditText nameText = (EditText)findViewById(R.id.new_happenin_title);
 			name = nameText.getText().toString().trim();
 			
 			String location = "";
-			EditText locationText = (EditText)findViewById(R.id.newHappenin_location);
+			EditText locationText = (EditText)findViewById(R.id.new_happenin_location);
 			location = locationText.getText().toString().trim();
 			
 			/*pull in start and end times from view*/
@@ -50,7 +50,7 @@ public class CreateNewHappenin extends Activity{
 			DateTime endTime = new DateTime();
 			
 			String description = "";
-			EditText descriptionText = (EditText)findViewById(R.id.newHappenin_description);
+			EditText descriptionText = (EditText)findViewById(R.id.new_happenin_description);
 			description = descriptionText.getText().toString().trim();
 
 			String nameValMsg = validateName(name);
@@ -65,7 +65,10 @@ public class CreateNewHappenin extends Activity{
 			else if(!timesValMsg.equals(""))
 				toastErrorMsg(timesValMsg);
 			else{ 
-				SQLHelper.createHappenin();
+				/* This will likely need it's own error handling in case the
+				 * SQLHelper errors out. */
+				//SQLHelper.createHappenin();
+				
 				Intent i = new Intent(CreateNewHappenin.this, ViewHappenins.class);
 				toastErrorMsg("Happenin created!");
 				startActivity(i);

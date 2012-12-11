@@ -19,11 +19,10 @@ http://androidcookbook.com/Recipe.seam;jsessionid=DDEB4D265C9B95E1617E3FC126647F
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_above="@id/spacer"
-        android:orientation="vertical" >
-    </ListView>
+        android:orientation="vertical" />
 
     <SlidingDrawer
-        android:id="@+id/drawer"
+        android:id="@+id/comment_drawer"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

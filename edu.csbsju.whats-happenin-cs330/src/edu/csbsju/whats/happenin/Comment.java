@@ -110,6 +110,14 @@ public class Comment {
 	 * @return A string representation of the comment
 	 */
 	public String toString(){
-		return "" + getUser().getName() + ": " + getComment();
+		String name = "";
+		User user = getUser();
+		if(user == null){
+			name = "NULL";
+		}
+		else {
+			name = user.getName();
+		}
+		return "" + name + ": " + getComment();
 	}
 }

@@ -42,6 +42,11 @@ public class ViewHappenins extends Activity {
     	
     	//debugging
     	//toastLong(""+userID);
+//    	Intent i = new Intent(this, CreateNewHappenin.class);
+//    	toastLong("Debug into Create New Happenin");
+//    	startActivity(i);
+    	
+    	
     	
 		try {
 			happs = SQLHelper.getHappenins();
