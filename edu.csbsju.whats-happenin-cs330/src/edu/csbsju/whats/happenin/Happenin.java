@@ -312,7 +312,13 @@ public class Happenin {
 	 * @version 11/07/2012
 	 */
 	public enum Status {
+		/**
+		 * Status is set to this when it is an empty happenin
+		 */
 		EMPTY,
+		/**
+		 * When this is a legit happenin, the status is set to VALID
+		 */
 		VALID
 	}
 
