@@ -26,7 +26,6 @@ public class ViewHappenin extends Activity {
 
 	//private int myHappLoc;
 	private Happenin myHap;
-	private HappeninsCollection happsCollection;
 	private int userID;
 
 	@Override

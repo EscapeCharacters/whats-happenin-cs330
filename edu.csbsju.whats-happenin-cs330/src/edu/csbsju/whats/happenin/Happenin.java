@@ -1,7 +1,6 @@
 package edu.csbsju.whats.happenin;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.joda.time.DateTime;

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
-import javax.crypto.spec.DESKeySpec;
-
 import org.joda.time.DateTime;
 import org.joda.time.Hours;
 
@@ -21,8 +19,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SlidingDrawer;
 import android.widget.Toast;
@@ -36,7 +32,6 @@ import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
  */
 public class ViewHappenins extends Activity {
 
-	HappeninsCollection happsCollection = new HappeninsCollection();
 	ArrayList<Happenin> happs = new ArrayList<Happenin>();
 	private static int MY_KEY = 1111; 
 	public static int ERROR = -1, START_TIME = 0, END_TIME = 1;
@@ -51,7 +46,6 @@ public class ViewHappenins extends Activity {
 	 * display all of them on the screen.
 	 */
 	public void onCreate(Bundle savedInstanceState) {
-		happsCollection.initDummy();
 		Intent intent = getIntent();
 		userID=intent.getIntExtra("userID", 0);
 
