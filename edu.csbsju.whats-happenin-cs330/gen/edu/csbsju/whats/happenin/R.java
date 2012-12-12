@@ -100,6 +100,7 @@ public final class R {
         public static final int happenin_title=0x7f060008;
         public static final int happenin_when=0x7f06000a;
         public static final int happenin_where=0x7f06000b;
+        public static final int happenins_refresh=0x7f060021;
         public static final int login=0x7f060003;
         public static final int make_comment=0x7f06000e;
         public static final int new_happenin_description=0x7f06001d;
