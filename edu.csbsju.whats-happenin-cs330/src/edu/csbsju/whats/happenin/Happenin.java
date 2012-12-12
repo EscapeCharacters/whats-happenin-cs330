@@ -180,22 +180,7 @@ public class Happenin {
 	 * @return the list of ratings for this happening
 	 */
 	public ArrayList<Rating> getRatingsList(){
-		return ratingsList;
-	}
-	
-	/**
-	 * Sets the list of ratings for this happening
-	 * @param list the list of ratings for this happening
-	 */
-	public void setRatingsList(ArrayList<Rating> list){
-		ratingsList = list;
-	}
-	
-	/**
-	 * Updates the ratingsList with the most recent ratings
-	 */
-	public void updateRatingsList(){
-		ratingsList = SQLHelper.getRatingsByHappeninId(id);
+		return SQLHelper.getRatingsByHappeninId(id);
 	}
 	
 	/**
@@ -203,8 +188,6 @@ public class Happenin {
 	 * @return the average weighted rating for this happenin
 	 */
 	public double getAverageRating(){
-		if(getRatingsList() == null)
-			updateRatingsList();
 		ArrayList<Rating> ratings = getRatingsList();
 		double totalWeight = 0;
 		DateTime now = new DateTime();
