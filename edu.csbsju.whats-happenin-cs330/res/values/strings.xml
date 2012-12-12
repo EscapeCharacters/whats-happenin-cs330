@@ -47,5 +47,6 @@
     <string name="change_password_old_password">enter old password</string>
     <string name="change_password_button">Change Password</string>
     <string name="logout">Log Out</string>
+    <string name="refresh_comments_list">Refresh Comments List</string>
 
 </resources>

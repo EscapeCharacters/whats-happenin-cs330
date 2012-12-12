@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <item android:id="@+id/log_out_menu_comments" android:orderInCategory="100" android:title="@string/logout"></item>
+    <item android:id="@+id/refresh_comments_list_menu" android:title="@string/refresh_comments_list" android:orderInCategory="100"></item>
     
 
 </menu>

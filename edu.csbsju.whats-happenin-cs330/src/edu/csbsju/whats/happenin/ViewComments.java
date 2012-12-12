@@ -149,6 +149,8 @@ public class ViewComments extends Activity {
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			toastLong("Log out successful");
+		} else if(item.getItemId() == R.id.refresh_comments_list_menu){
+			refreshCommentsList();
 		}
 		return false;
 	}

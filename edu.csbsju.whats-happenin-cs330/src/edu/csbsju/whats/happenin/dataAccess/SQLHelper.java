@@ -264,6 +264,7 @@ public class SQLHelper {
 	public static void insertComment(int userId, int happId, String comment){
 		RequestTask task = new RequestTask();
 		String fixedComment = comment.replaceAll(" ", "+");
+		fixedComment = fixedComment.replaceAll("'", "''");
 		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/insertComment.php?happid="+happId+"&comment="+fixedComment+"&userid="+userId);
 	}
 	
