@@ -217,6 +217,7 @@ public class SQLHelper {
 		if (comments.size() == 0){
 			comment = new Comment();
 			comment.setComment("No comments yet");
+			comment.setUserId(0);
 			comments.add(comment);
 		}
 		return comments;
@@ -294,6 +295,7 @@ public class SQLHelper {
 		happDescription = happDescription.replaceAll(" ", "+");
 		String happLocation = location.replaceAll("'", "''");
 		happLocation = happLocation.replaceAll(" ", "+");
+		
 		int startYear = startDateTime.year().get();
 		int startMonth = startDateTime.monthOfYear().get();
 		int startDay = startDateTime.dayOfMonth().get();
