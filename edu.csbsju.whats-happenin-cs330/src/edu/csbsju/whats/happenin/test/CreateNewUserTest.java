@@ -34,7 +34,7 @@ public class CreateNewUserTest extends AndroidTestCase{
 		assertTrue("Non-matching passwords passed validation.", !nonconfirmedPasswordMsg.equals(""));
 		
 		String tooShortPasswordMsg = cnu.validatePassword("pswd01", "pswd01");
-		assertTrue("Non-matching passwords passed validation.", !tooShortPasswordMsg.equals(""));
+		assertTrue("Too short passwords passed validation.", !tooShortPasswordMsg.equals(""));
 		
 		String noSymbolsPasswordMsg = cnu.validatePassword("password", "password");
 		assertTrue("Password without a symbol passed validation.", !noSymbolsPasswordMsg.equals(""));
