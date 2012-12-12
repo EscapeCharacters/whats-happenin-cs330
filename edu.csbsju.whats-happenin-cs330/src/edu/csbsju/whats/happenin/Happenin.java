@@ -201,14 +201,18 @@ public class Happenin {
 		return getAverageRatingLogic();
 	}
 	
-	//this method is to be called for unit tests. It allows us to mock in a list of ratings.
+	/**
+	 * This method is to be called for unit tests. It allows us to mock in a list of ratings.
+	 * @return the average rating in the form of a double
+	 */
 	public Double getAverageRatingForTests(){
 		return getAverageRatingLogic();
 	}
 	
-	//this houses the logic for getAverageRating.  
-	//It is called by getAverageRating when the app is running.
-	//It is called by getAverageRatingForTests when unit testing.
+	/**This houses the logic for getAverageRating.  
+	 *It is called by getAverageRating when the app is running.
+	 *It is called by getAverageRatingForTests when unit testing.
+	 */
 	private Double getAverageRatingLogic(){
 		ArrayList<Rating> ratings = getRatingsList();
 		

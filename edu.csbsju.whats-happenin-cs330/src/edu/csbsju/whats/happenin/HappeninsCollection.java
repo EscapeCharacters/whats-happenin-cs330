@@ -15,18 +15,32 @@ public class HappeninsCollection {
 	
 	private ArrayList<Happenin> happenins;
 	
+	/**
+	 * Default Constructor
+	 */
 	public HappeninsCollection(){
 		happenins = new ArrayList<Happenin>();
 	}
 	
+	/**
+	 * Constructor used when given an array list of happenins
+	 * @param happenin list of happenins
+	 */
 	public HappeninsCollection(ArrayList<Happenin> happenin){
 		happenins = happenin;		
 	}
 	
+	/**
+	 * Constructor used when given one Happenin
+	 * @param happenin the single happenin.
+	 */
 	public HappeninsCollection(Happenin happenin) {
 		happenins.add(happenin);
 	}
 	
+	/**
+	 * Not used anywhere, just a dummy process that was used in the early stages of development.
+	 */
 	public void initDummy() {
 		//I'm not populating comments yet.  Assume they'll be visible once a user opens up the Happenin's page
     	//Also, for now, I'll say the rating ranges from 1-4
@@ -68,6 +82,10 @@ public class HappeninsCollection {
     	happenins.add(hap4);
 	}
 	
+	/**
+	 * Returns the current list of Happenins.
+	 * @return the current list of Happenins.
+	 */
 	public ArrayList<Happenin> getHappenins() {
 		return happenins;
 	}

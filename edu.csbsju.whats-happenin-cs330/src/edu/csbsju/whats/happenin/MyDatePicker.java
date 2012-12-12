@@ -22,6 +22,10 @@ public class MyDatePicker extends Activity {
         
     }
     
+    /**
+     * Handles when a user selects the time and date from the xml date/time picker file
+     * @param view
+     */
     public void submit(View view) {
     	DatePicker datePicker = (DatePicker)findViewById(R.id.date_picker);
     	TimePicker timePicker = (TimePicker)findViewById(R.id.time_picker);
