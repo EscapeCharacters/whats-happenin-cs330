@@ -84,6 +84,7 @@ public class Login extends Activity {
 					intent.putExtra("userID", user.getUserId());
 					toastShort("Welcome, "+ user.getName());
 					startActivity(intent);
+					finish();
 				} 
 				// If not good, then provides error message
 				else {
