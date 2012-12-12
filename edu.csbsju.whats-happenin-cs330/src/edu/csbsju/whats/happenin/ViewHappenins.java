@@ -138,6 +138,11 @@ public class ViewHappenins extends Activity {
 			i.putExtra("userId", userID);
 			startActivity(i);
 			return true;
+		} else if(item.getItemId() == R.id.log_out_menu){
+			Intent intent = new Intent(getApplicationContext(), Login.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			toastLong("Log out successful");
 		}
 		return false;
 	}

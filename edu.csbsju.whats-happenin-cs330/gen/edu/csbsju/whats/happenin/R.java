@@ -33,7 +33,7 @@ public final class R {
     }
     public static final class id {
         public static final int change_password_confirm_new_password=0x7f090002;
-        public static final int change_password_menu=0x7f090026;
+        public static final int change_password_menu=0x7f090027;
         public static final int change_password_new_password=0x7f090001;
         public static final int comment=0x7f090009;
         public static final int commentList=0x7f090005;
@@ -48,6 +48,8 @@ public final class R {
         public static final int happenin_drawer=0x7f09001d;
         public static final int happenin_drawer_button=0x7f09001f;
         public static final int happenin_drawer_content=0x7f09001e;
+        public static final int log_out_menu=0x7f090028;
+        public static final int log_out_menu_comments=0x7f090025;
         public static final int menu_settings=0x7f090023;
         public static final int mylist=0x7f09001c;
         public static final int new_email=0x7f09001b;
@@ -68,7 +70,7 @@ public final class R {
         public static final int title=0x7f09000c;
         public static final int username=0x7f090014;
         public static final int view_comments=0x7f090011;
-        public static final int view_happenins_menu=0x7f090025;
+        public static final int view_happenins_menu=0x7f090026;
         public static final int when=0x7f09000f;
         public static final int where=0x7f090010;
     }
@@ -84,7 +86,8 @@ public final class R {
         public static final int activity_change_password=0x7f080000;
         public static final int activity_login=0x7f080001;
         public static final int activity_new_user=0x7f080002;
-        public static final int activity_view_happenins=0x7f080003;
+        public static final int activity_view_comments=0x7f080003;
+        public static final int activity_view_happenins=0x7f080004;
     }
     public static final class string {
         public static final int app_name=0x7f060000;
@@ -112,6 +115,7 @@ public final class R {
         public static final int happenins_refresh=0x7f060021;
         public static final int hello_world=0x7f060022;
         public static final int login=0x7f060003;
+        public static final int logout=0x7f060028;
         public static final int make_comment=0x7f06000e;
         public static final int menu_settings=0x7f060023;
         public static final int new_happenin_description=0x7f06001d;

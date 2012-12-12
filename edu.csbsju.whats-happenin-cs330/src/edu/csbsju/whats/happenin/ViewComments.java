@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -135,8 +136,19 @@ public class ViewComments extends Activity {
      * Adds the item view_happenins to the menu area
      */
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_view_happenins, menu);
+        getMenuInflater().inflate(R.menu.activity_view_comments, menu);
         return true;
     }
+    
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if(item.getItemId() == R.id.log_out_menu_comments){
+			Intent intent = new Intent(getApplicationContext(), Login.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			toastLong("Log out successful");
+		}
+		return false;
+	}
 
 }
