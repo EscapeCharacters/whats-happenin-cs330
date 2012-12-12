@@ -180,22 +180,17 @@ public class Happenin {
 	 * @return the list of ratings for this happening
 	 */
 	public ArrayList<Rating> getRatingsList(){
-		return ratingsList;
+		if(ratingsList!=null)
+			return ratingsList;
+		return SQLHelper.getRatingsByHappeninId(id);
 	}
 	
 	/**
-	 * Sets the list of ratings for this happening
-	 * @param list the list of ratings for this happening
+	 * Sets the list of ratings relating to this happening
+	 * @return the list of ratings to be set
 	 */
-	public void setRatingsList(ArrayList<Rating> list){
-		ratingsList = list;
-	}
-	
-	/**
-	 * Updates the ratingsList with the most recent ratings
-	 */
-	public void updateRatingsList(){
-		ratingsList = SQLHelper.getRatingsByHappeninId(id);
+	public void setRatingsList(ArrayList<Rating> ratingsList){
+		this.ratingsList = ratingsList;
 	}
 	
 	/**
@@ -203,21 +198,36 @@ public class Happenin {
 	 * @return the average weighted rating for this happenin
 	 */
 	public double getAverageRating(){
-		if(getRatingsList() == null)
-			updateRatingsList();
+		ratingsList=null;
+		return getAverageRatingLogic();
+	}
+	
+	//this method is to be called for unit tests. It allows us to mock in a list of ratings.
+	public Double getAverageRatingForTests(){
+		return getAverageRatingLogic();
+	}
+	
+	//this houses the logic for getAverageRating.  
+	//It is called by getAverageRating when the app is running.
+	//It is called by getAverageRatingForTests when unit testing.
+	private Double getAverageRatingLogic(){
 		ArrayList<Rating> ratings = getRatingsList();
+		
+		if(ratings.size()==0)
+			return -1.0;
+		
 		double totalWeight = 0;
 		DateTime now = new DateTime();
 
 		for (Rating r: ratings){
-			Integer staleness = Minutes.minutesBetween(now, r.getRateTime()).getMinutes();
+			Integer staleness = Math.max(Minutes.minutesBetween(now, r.getRateTime()).getMinutes(),1);
 			double weight = 1.0/staleness; 
 			totalWeight+=weight;
 		}
 
 		double weightedTotal = 0;
 		for (Rating r: ratings){
-			Integer staleness = Minutes.minutesBetween(now, r.getRateTime()).getMinutes();
+			Integer staleness = Math.max(Minutes.minutesBetween(now, r.getRateTime()).getMinutes(),1);
 			double weight = 1.0/staleness;
 			double weightedRanking = weight*r.getRating();
 			weightedTotal += weightedRanking;

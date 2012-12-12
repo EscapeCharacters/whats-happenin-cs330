@@ -14,11 +14,16 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroller"
+    android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+
+<LinearLayout 
     android:layout_width="300dp"
-    android:layout_height="300dp"
+    android:layout_height="350dp"
     android:orientation="vertical"
-    android:padding="12dip" >
+    android:padding="12dip">
 
     <TextView
         android:id="@+id/title"
@@ -56,12 +61,35 @@ limitations under the License.
         android:layout_gravity="center_horizontal"
         android:text="@string/happenin_where" />
 
+   
+    	
     <Button
-        android:id="@+id/view_comments"
+       	android:id="@+id/view_comments"
+       	android:layout_width="wrap_content"
+       	android:layout_height="wrap_content"
+       	android:layout_gravity="center_horizontal|bottom"
+       	android:onClick="viewComments"
+       	android:text="@string/view_comments" 
+       	android:layout_marginTop="20dp"
+       	android:layout_marginBottom="20dp"/>
+    	
+    <RatingBar
+        android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
-        android:onClick="viewComments"
-        android:text="@string/view_comments" />
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:layout_gravity="center_horizontal" />
+    
+    <Button
+       	android:id="@+id/create_rating"
+       	android:layout_width="wrap_content"
+       	android:layout_height="wrap_content"
+       	android:layout_gravity="center_horizontal|bottom"
+       	android:onClick="createRating"
+       	android:text="@string/create_rating" />
+    	
+    	
 
 </LinearLayout>
+</ScrollView>

@@ -48,13 +48,13 @@ public class HappeninTest extends AndroidTestCase{
 		ratings1.add(rate1);
 		ratings1.add(rate2);
 		hap1.setRatingsList(ratings1);
-		double rating1 = hap1.getAverageRating();
+		double rating1 = hap1.getAverageRatingForTests();
 
 		ArrayList<Rating> ratings2 = new ArrayList<Rating>();
 		ratings2.add(rate2);
 		ratings2.add(rate3);
 		hap2.setRatingsList(ratings2);
-		double rating2 = hap2.getAverageRating();
+		double rating2 = hap2.getAverageRatingForTests();
 		
 		assertTrue("Hap with 2 rankings should have a total ranking between the two", rating1>2&&rating1<3);
 		assertTrue("Hap with higher rankings should have a higher average ranking, even if they're older", rating1<rating2);
@@ -63,14 +63,14 @@ public class HappeninTest extends AndroidTestCase{
 		ratings1.add(rate2);
 		ratings1.add(rate4);
 		hap1.setRatingsList(ratings1);
-		rating1 = hap1.getAverageRating();
+		rating1 = hap1.getAverageRatingForTests();
 		
 		ratings2 = new ArrayList<Rating>();
 		ratings2.add(rate1);
 		ratings2.add(rate2);
 		ratings2.add(rate4);
 		hap2.setRatingsList(ratings2);
-		rating2 = hap2.getAverageRating();
+		rating2 = hap2.getAverageRatingForTests();
 		
 		assertTrue("Hap with a new, low rank brings down ranking", rating1>rating2);
 		
@@ -78,16 +78,22 @@ public class HappeninTest extends AndroidTestCase{
 		ratings1.add(rate3);
 		ratings1.add(rate4);
 		hap1.setRatingsList(ratings1);
-		rating1 = hap1.getAverageRating();
+		rating1 = hap1.getAverageRatingForTests();
 		
 		ratings2 = new ArrayList<Rating>();
 		ratings2.add(rate3);
 		ratings2.add(rate4);
 		ratings2.add(rate5);
 		hap2.setRatingsList(ratings2);
-		rating2 = hap2.getAverageRating();
+		rating2 = hap2.getAverageRatingForTests();
 		
 		assertTrue("Hap with a new, high rank brings up ranking", rating1<rating2);
+		
+		ratings1 = new ArrayList<Rating>();
+		hap1.setRatingsList(ratings1);
+		rating1 = hap1.getAverageRatingForTests();
+		
+		assertTrue("Hap with empty rankings should have returned -1", rating1==-1.0);
 		
 	}
 

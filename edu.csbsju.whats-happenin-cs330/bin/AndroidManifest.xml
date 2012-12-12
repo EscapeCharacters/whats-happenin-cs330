@@ -49,11 +49,17 @@
             android:name=".ViewComments"
             android:label="@string/view_comments_title" >
         </activity>
+<<<<<<< HEAD
         <activity android:name="CreateNewHappenin" >
         </activity>
         <activity
             android:name="MyDatePicker"
             android:theme="@android:style/Theme.Holo.Light.Dialog" >
+=======
+        <activity
+            android:name=".ChangePassword"
+            android:label="@string/title_activity_change_password" >
+>>>>>>> 39b2063afd66471d58ac11ae178f5aeed32f7a33
         </activity>
 
     </application>
