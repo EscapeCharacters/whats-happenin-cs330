@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeFieldType;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -284,7 +285,34 @@ public class SQLHelper {
 		RequestTask task = new RequestTask();
 		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/insertRating.php?userid="+userID+"&happid="+happId+"&rating="+rating);
 		task.get(2000, TimeUnit.MILLISECONDS);
+	}
+	
+	public static void insertHappenin(String name, String description, DateTime startDateTime, DateTime endDateTime, String location) throws InterruptedException, ExecutionException, TimeoutException{
+		String happName = name.replaceAll("'", "''");
+		happName = happName.replaceAll(" ", "+");
+		String happDescription = description.replaceAll("'", "''");
+		happDescription = happDescription.replaceAll(" ", "+");
+		String happLocation = location.replaceAll("'", "''");
+		happLocation = happLocation.replaceAll(" ", "+");
+		int startYear = startDateTime.year().get();
+		int startMonth = startDateTime.monthOfYear().get();
+		int startDay = startDateTime.dayOfMonth().get();
+		int startHour = startDateTime.hourOfDay().get();
+		int startMinute = startDateTime.minuteOfHour().get();
+		int startSecond = startDateTime.secondOfMinute().get();
+		String startDate = ""+startYear+"-"+startMonth+"-"+startDay+"+"+startHour+":"+startMinute+":"+startSecond;
 		
+		int endYear = endDateTime.year().get();
+		int endMonth = endDateTime.monthOfYear().get();
+		int endDay = endDateTime.dayOfMonth().get();
+		int endHour = endDateTime.hourOfDay().get();
+		int endMinute = endDateTime.minuteOfHour().get();
+		int endSecond = endDateTime.secondOfMinute().get();
+		String endDate = ""+endYear+"-"+endMonth+"-"+endDay+"+"+endHour+":"+endMinute+":"+endSecond;
+		
+		RequestTask task = new RequestTask();
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/insertHappenin.php?name="+happName+"&description="+happDescription+"&startDateTime="+startDate+"&endDateTime="+endDate+"&location="+happLocation+"");
+		task.get(2000, TimeUnit.MILLISECONDS);
 	}
 	
 	/** This parses the MySQL DATETIME string into a DateTime object in Java */
