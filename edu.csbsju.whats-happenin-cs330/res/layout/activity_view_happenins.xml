@@ -81,7 +81,6 @@
                     android:hint="@string/new_happenin_end_time"
                     android:inputType="text"
                     android:layout_weight="1" />
-"
             </LinearLayout>
 
             <EditText
@@ -105,6 +104,22 @@
                 android:text="@string/sumbit_new_happenin"
                 android:layout_gravity="bottom"
                 android:onClick="createHappenin"/>
+            
+            <TextView 
+                android:id="@+id/duplicate_warning_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:maxLines="2"
+                android:text="\nPlease take care not to add duplicate Happenin's!" />
+            
+            <TextView 
+                android:id="@+id/duplicate_warning_message2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:maxLines="2"
+                android:text="Thank You!" />
         </LinearLayout>
     </SlidingDrawer>
 
