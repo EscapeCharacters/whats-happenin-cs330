@@ -83,26 +83,41 @@ public class ViewHappenin extends Activity {
 			when = (TextView)findViewById(R.id.when);
 			TextView ratingField = (TextView)findViewById(R.id.rating);
 			
+			
+			String formattedAverage ="";
 			double avg = myHap.getAverageRating();
-			String formattedAverage = String.format("%.1f", avg);
+			if(avg>=0){
+				formattedAverage = String.format("%.1f", avg);
+				ratingField.setText("Rating: " + formattedAverage);
+			}
+			else{
+				ratingField.setText("");
+			}
 			
 			title.setText(myHap.getName());
 			description.setText(myHap.getDescription());
 			location.setText(myHap.getLocation());
 			when.setText(myHap.getTimeString());	
-			ratingField.setText("Rating: " + formattedAverage);
 			
-			final RatingBar ratingsBar = (RatingBar)findViewById(R.id.ratingBar);
-			ratingsBar.setStepSize(0.1f);
-			ratingsBar.setRating((float)avg);
-			ratingsBar.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
-			public void onRatingChanged(RatingBar ratingBar, float rating,
-					boolean fromUser) {
-		 
-					ratingsBar.setStepSize(1.0f);
-		 
-				}
-			});
+			if(myHap.getStartTime().isAfterNow()){
+				RatingBar ratingsBar = (RatingBar)findViewById(R.id.ratingBar);
+				ratingsBar.setVisibility(RatingBar.GONE);
+				Button rateButton = (Button)findViewById(R.id.create_rating);
+				rateButton.setVisibility(Button.GONE);
+			}
+			else{ //happenin has started
+				final RatingBar ratingsBar = (RatingBar)findViewById(R.id.ratingBar);
+				ratingsBar.setStepSize(0.1f);
+				ratingsBar.setRating((float)avg);
+				ratingsBar.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
+				public void onRatingChanged(RatingBar ratingBar, float rating,
+						boolean fromUser) {
+			 
+						ratingsBar.setStepSize(1.0f);
+			 
+					}
+				});
+			}
 			
 		} else {
 			TextView title = new TextView(ViewHappenin.this), 

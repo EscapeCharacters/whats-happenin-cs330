@@ -89,6 +89,12 @@ public class HappeninTest extends AndroidTestCase{
 		
 		assertTrue("Hap with a new, high rank brings up ranking", rating1<rating2);
 		
+		ratings1 = new ArrayList<Rating>();
+		hap1.setRatingsList(ratings1);
+		rating1 = hap1.getAverageRatingForTests();
+		
+		assertTrue("Hap with empty rankings should have returned -1", rating1==-1.0);
+		
 	}
 
 	public void testGetTimeString(){

@@ -212,6 +212,10 @@ public class Happenin {
 	//It is called by getAverageRatingForTests when unit testing.
 	private Double getAverageRatingLogic(){
 		ArrayList<Rating> ratings = getRatingsList();
+		
+		if(ratings.size()==0)
+			return -1.0;
+		
 		double totalWeight = 0;
 		DateTime now = new DateTime();
 
