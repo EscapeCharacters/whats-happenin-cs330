@@ -44,6 +44,45 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/new_happenin_title"
                 android:inputType="text" />
+            
+            <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/new_happenin_start_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/new_happenin_start_time"
+                    android:inputType="text" 
+                    android:layout_weight="1" />
+
+                <TextView 
+                    android:id="@+id/label_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_to"
+                    android:inputType="none"
+                    android:editable="false" />
+
+                <EditText
+                    android:id="@+id/new_happenin_end_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/new_happenin_end_time"
+                    android:inputType="text"
+                    android:layout_weight="1" />
+"
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/new_happenin_location"
@@ -58,6 +97,14 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/new_happenin_description"
                 android:inputType="textMultiLine" />
+            
+            <Button 
+                android:id="@+id/submit_new_happinin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sumbit_new_happenin"
+                android:layout_gravity="bottom"
+                android:onClick="createHappenin"/>
         </LinearLayout>
     </SlidingDrawer>
 

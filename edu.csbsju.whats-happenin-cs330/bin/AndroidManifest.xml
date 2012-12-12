@@ -8,16 +8,18 @@
         android:targetSdkVersion="15" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    
-    <instrumentation android:name="android.test.InstrumentationTestRunner"       
-        android:targetPackage="edu.csbsju.whats.happenin" 
-        android:label="Tests for My App" />
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:label="Tests for My App"
+        android:targetPackage="edu.csbsju.whats.happenin" />
 
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <uses-library android:name="android.test.runner" />
+
         <activity
             android:name=".Login"
             android:label="@string/title_activity_login" >
@@ -47,8 +49,13 @@
             android:name=".ViewComments"
             android:label="@string/view_comments_title" >
         </activity>
-        <activity android:name="CreateNewHappenin">
+        <activity android:name="CreateNewHappenin" >
         </activity>
+        <activity
+            android:name="MyDatePicker"
+            android:theme="@android:style/Theme.Holo.Light.Dialog" >
+        </activity>
+
     </application>
 
 </manifest>

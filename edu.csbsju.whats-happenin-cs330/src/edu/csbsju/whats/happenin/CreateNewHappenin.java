@@ -37,9 +37,9 @@ public class CreateNewHappenin extends Activity{
 		@SuppressWarnings("unused")
 		public void newHappenin(View view) throws InterruptedException, ExecutionException, TimeoutException{
 			Happenin happenin = null;
-			String name = "";
+			String title = "";
 			EditText nameText = (EditText)findViewById(R.id.new_happenin_title);
-			name = nameText.getText().toString().trim();
+			title = nameText.getText().toString().trim();
 			
 			String location = "";
 			EditText locationText = (EditText)findViewById(R.id.new_happenin_location);
@@ -53,7 +53,7 @@ public class CreateNewHappenin extends Activity{
 			EditText descriptionText = (EditText)findViewById(R.id.new_happenin_description);
 			description = descriptionText.getText().toString().trim();
 
-			String nameValMsg = validateName(name);
+			String nameValMsg = validateTitle(title);
 			String locationValMsg = validateLocation(location);
 			String timesValMsg = validateTimes(startTime, endTime);
 			String descriptionValMsg = validateDescription(description);
@@ -75,7 +75,7 @@ public class CreateNewHappenin extends Activity{
 			}
 		}
 		
-		public String validateName(String name){
+		public String validateTitle(String name){
 			if(name.length()>50)
 				return "Happenin name must be 50 characters or less. Yours is "+name.length()+".";
 			else 
