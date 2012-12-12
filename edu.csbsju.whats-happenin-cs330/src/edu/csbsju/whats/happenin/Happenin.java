@@ -210,14 +210,14 @@ public class Happenin {
 		DateTime now = new DateTime();
 
 		for (Rating r: ratings){
-			Integer staleness = Minutes.minutesBetween(now, r.getRateTime()).getMinutes();
+			Integer staleness = Math.max(Minutes.minutesBetween(now, r.getRateTime()).getMinutes(),1);
 			double weight = 1.0/staleness; 
 			totalWeight+=weight;
 		}
 
 		double weightedTotal = 0;
 		for (Rating r: ratings){
-			Integer staleness = Minutes.minutesBetween(now, r.getRateTime()).getMinutes();
+			Integer staleness = Math.max(Minutes.minutesBetween(now, r.getRateTime()).getMinutes(),1);
 			double weight = 1.0/staleness;
 			double weightedRanking = weight*r.getRating();
 			weightedTotal += weightedRanking;

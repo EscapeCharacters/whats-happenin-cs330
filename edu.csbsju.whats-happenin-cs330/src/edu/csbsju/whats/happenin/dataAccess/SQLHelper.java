@@ -276,6 +276,17 @@ public class SQLHelper {
 		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/userCreate.php?name="+fixedName+"&password="+password+"&email="+email+"&username="+username);
 	}
 	
+	/** Inserts a new rating 
+	 * @throws TimeoutException 
+	 * @throws ExecutionException 
+	 * @throws InterruptedException */
+	public static void createRating(int rating, int userID, int happId) throws InterruptedException, ExecutionException, TimeoutException{
+		RequestTask task = new RequestTask();
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/insertRating.php?userid="+userID+"&happid="+happId+"&rating="+rating);
+		task.get(2000, TimeUnit.MILLISECONDS);
+		
+	}
+	
 	/** This parses the MySQL DATETIME string into a DateTime object in Java */
 	public static DateTime parseMySqlDate(String dateString){
 		String[] split1 = dateString.split(" ");//Separates the Date and Time

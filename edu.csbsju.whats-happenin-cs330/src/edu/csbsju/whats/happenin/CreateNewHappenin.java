@@ -25,7 +25,7 @@ public class CreateNewHappenin extends Activity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_create_happenin);
+		//setContentView(R.layout.activity_create_happenin);
 	}
 	
 	

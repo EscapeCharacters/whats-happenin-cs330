@@ -32,6 +32,6 @@
     <string name="new_happenin_description">Now give us some details</string>
     <string name="new_happenin_location">Location</string>
     <string name="create_happenin">Create a new Happenin</string>
-    
+    <string name="create_rating">Rate</string>
 
 </resources>
