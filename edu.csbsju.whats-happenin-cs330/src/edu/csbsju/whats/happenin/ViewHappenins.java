@@ -34,7 +34,7 @@ public class ViewHappenins extends Activity {
 
 	ArrayList<Happenin> happs = new ArrayList<Happenin>();
 	private static int MY_KEY = 1111; 
-	public static int ERROR = -1, START_TIME = 0, END_TIME = 1;
+	public static final int ERROR = -1, START_TIME = 0, END_TIME = 1;
 	private DateTime startTime_DT = null, endTime_DT = null;
 
 
@@ -107,7 +107,7 @@ public class ViewHappenins extends Activity {
 		endTimeListener();
 		
 	}
-	
+
 	private void startTimeListener(){
 		EditText startTime = (EditText) findViewById(R.id.new_happenin_start_time);
 		startTime.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +131,9 @@ public class ViewHappenins extends Activity {
 	}
 
 	@Override
+	/**
+	 * This is what handles the information returned from the Date and Time picker
+	 */
 	protected void onActivityResult(int pRequestCode, int resultCode, Intent data)
 	{
 		if (resultCode == START_TIME && pRequestCode == MY_KEY){
@@ -173,7 +176,10 @@ public class ViewHappenins extends Activity {
 	}
 
 
-
+	/**
+	 * This is called when a new happenin is created
+	 * @param view
+	 */
 	public void createHappenin(View view) {
 		//finish this; it was just copy pasted
 		
@@ -188,17 +194,6 @@ public class ViewHappenins extends Activity {
 			   endTime = endTime_ET.getText().toString().trim(),
 			   location = location_ET.getText().toString().trim(),
 			   description = description_ET.getText().toString().trim();
-		
-//		try {
-//			SQLHelper.insertComment(userID, myHappeninID, comment);
-//			closeKeyboard();
-//			closeMakeCommentDrawer();
-//			toastShort("Comment posted");
-//			commentET.setText("");
-//		}
-//		catch(Exception e) {
-//			toastLong("Debug: "+e.toString());
-//		}
 		
 		if (title.length() != 0) {
 			if(startTime.length() != 0 && endTime.length() != 0) {
@@ -256,6 +251,11 @@ public class ViewHappenins extends Activity {
 		}
 	}
 	
+	/**
+	 * Validates the title of the Happenin
+	 * @param name the Title of the happenin
+	 * @return An error string if the happenin title is more than 50 characters
+	 */
 	public String validateTitle(String name){
 		if(name.length()>50)
 			return "Happenin name must be 50 characters or less. Yours is "+name.length()+".";
@@ -334,7 +334,7 @@ public class ViewHappenins extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if(item.getItemId() == R.id.view_happenins_menu){
+		if(item.getItemId() == R.id.view_happenins_menu){ //Refresh the list of happenins
 			ListView listView = (ListView) findViewById(R.id.mylist);
 			try {
 				happs = SQLHelper.getHappenins();
@@ -354,12 +354,12 @@ public class ViewHappenins extends Activity {
 					happs);
 			listView.setAdapter(adapter);
 			return true;
-		} else if(item.getItemId() == R.id.change_password_menu){
+		} else if(item.getItemId() == R.id.change_password_menu){ //Sends a user to the change password screen
 			Intent i = new Intent(ViewHappenins.this, ChangePassword.class);
 			i.putExtra("userId", userID);
 			startActivity(i);
 			return true;
-		} else if(item.getItemId() == R.id.log_out_menu){
+		} else if(item.getItemId() == R.id.log_out_menu){ //Logs out the user
 			Intent intent = new Intent(getApplicationContext(), Login.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
