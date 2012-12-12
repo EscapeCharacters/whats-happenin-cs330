@@ -227,6 +227,8 @@ public class ViewHappenins extends Activity {
 								location_ET.setText("");
 								description_ET.setText("");
 								
+								refreshHappeninsList();
+								
 							}
 							catch(Exception e) {
 								toastLong("Debug: "+e.toString());
@@ -335,24 +337,7 @@ public class ViewHappenins extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if(item.getItemId() == R.id.view_happenins_menu){ //Refresh the list of happenins
-			ListView listView = (ListView) findViewById(R.id.mylist);
-			try {
-				happs = SQLHelper.getHappenins();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExecutionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (TimeoutException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			ArrayAdapter<Happenin> adapter = 
-					new ArrayAdapter<Happenin>
-			(this, android.R.layout.simple_list_item_1, android.R.id.text1, 
-					happs);
-			listView.setAdapter(adapter);
+			refreshHappeninsList();
 			return true;
 		} else if(item.getItemId() == R.id.change_password_menu){ //Sends a user to the change password screen
 			Intent i = new Intent(ViewHappenins.this, ChangePassword.class);
@@ -371,6 +356,24 @@ public class ViewHappenins extends Activity {
 	
 	@Override
 	public void onBackPressed() {
+	}
+	
+	public void refreshHappeninsList(){
+		ListView listView = (ListView) findViewById(R.id.mylist);
+		try {
+			happs = SQLHelper.getHappenins();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		} catch (TimeoutException e) {
+			e.printStackTrace();
+		}
+		ArrayAdapter<Happenin> adapter = 
+				new ArrayAdapter<Happenin>
+		(this, android.R.layout.simple_list_item_1, android.R.id.text1, 
+				happs);
+		listView.setAdapter(adapter);
 	}
 
 }
