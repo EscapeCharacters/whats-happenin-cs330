@@ -48,11 +48,11 @@ This is the method that handles the creating of a new user when the 'Create' but
 		EditText oldPasswordText = (EditText)findViewById(R.id.old_password);
 		String oldPassword = oldPasswordText.getText().toString();
 
-		EditText pswdText = (EditText)findViewById(R.id.change_password_new_password);
-		String password = pswdText.getText().toString();
+		EditText passwordText = (EditText)findViewById(R.id.change_password_new_password);
+		String password = passwordText.getText().toString();
 		
-		EditText cnfmPswdText = (EditText)findViewById(R.id.change_password_confirm_new_password);
-		String confirmedPassword = cnfmPswdText.getText().toString();
+		EditText confirmedPasswordText = (EditText)findViewById(R.id.change_password_confirm_new_password);
+		String confirmedPassword = confirmedPasswordText.getText().toString();
 		
 		user = SQLHelper.getUserById(userId);
 		

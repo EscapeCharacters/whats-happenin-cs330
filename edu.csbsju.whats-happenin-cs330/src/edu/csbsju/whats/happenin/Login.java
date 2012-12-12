@@ -27,7 +27,7 @@ public class Login extends Activity {
 		
 		//makes debugging simpler:////////////////////////////////
 //		Intent intent = new Intent(this, ViewHappenins.class);
-//		intent.putExtra("userID", 16);
+//		intent.putExtra("userId", 16);
 //		toastErrorMsg("Auto-logged in to Debug User");
 //		startActivity(intent);
 		//////////////////////////////////////////////////////////	
@@ -61,8 +61,8 @@ public class Login extends Activity {
 		EditText userText = (EditText)findViewById(R.id.username);
 		String username = userText.getText().toString();
 
-		EditText pswdText = (EditText)findViewById(R.id.password);
-		String password = pswdText.getText().toString();
+		EditText passwordText = (EditText)findViewById(R.id.password);
+		String password = passwordText.getText().toString();
 
 		User user = null;
 
@@ -80,7 +80,7 @@ public class Login extends Activity {
 				//If good, then it logs you in
 				else if(password.equals(user.getPassword()) && username.equals(user.getUsername())){
 					Intent intent = new Intent(this, ViewHappenins.class);
-					intent.putExtra("userID", user.getUserId());
+					intent.putExtra("userId", user.getUserId());
 					toastShort("Welcome, "+ user.getName());
 					startActivity(intent);
 					finish();

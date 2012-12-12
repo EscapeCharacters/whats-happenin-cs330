@@ -218,17 +218,17 @@ public class Happenin {
 		double totalWeight = 0;
 		DateTime now = new DateTime();
 
-		for (Rating r: ratings){
-			Integer staleness = Math.max(Minutes.minutesBetween(now, r.getRateTime()).getMinutes(),1);
+		for (Rating rating: ratings){
+			Integer staleness = Math.max(Minutes.minutesBetween(now, rating.getRateTime()).getMinutes(),1);
 			double weight = 1.0/staleness; 
 			totalWeight+=weight;
 		}
 
 		double weightedTotal = 0;
-		for (Rating r: ratings){
-			Integer staleness = Math.max(Minutes.minutesBetween(now, r.getRateTime()).getMinutes(),1);
+		for (Rating rating: ratings){
+			Integer staleness = Math.max(Minutes.minutesBetween(now, rating.getRateTime()).getMinutes(),1);
 			double weight = 1.0/staleness;
-			double weightedRanking = weight*r.getRating();
+			double weightedRanking = weight*rating.getRating();
 			weightedTotal += weightedRanking;
 		}
 
@@ -240,7 +240,7 @@ public class Happenin {
 	 * @return time string for use in the view
 	 */
 	public String getTimeString(){
-		StringBuilder sb = new StringBuilder("");
+		StringBuilder stringBuilder = new StringBuilder("");
 		String startHour = startTime.hourOfDay().getAsText();
 		String startMinute = startTime.minuteOfHour().getAsText();
 		String endHour = endTime.hourOfDay().getAsText();
@@ -285,34 +285,34 @@ public class Happenin {
 
 
 		//builds the string
-		sb.append(startDayOfWeek);
-		sb.append(". ");
-		sb.append(startMonth);
-		sb.append("/");
-		sb.append(startDay);
-		sb.append(" ");
-		sb.append(startHour);
-		sb.append(":");
-		sb.append(startMinute);
-		sb.append(startAmPm);
-		sb.append(" to ");
+		stringBuilder.append(startDayOfWeek);
+		stringBuilder.append(". ");
+		stringBuilder.append(startMonth);
+		stringBuilder.append("/");
+		stringBuilder.append(startDay);
+		stringBuilder.append(" ");
+		stringBuilder.append(startHour);
+		stringBuilder.append(":");
+		stringBuilder.append(startMinute);
+		stringBuilder.append(startAmPm);
+		stringBuilder.append(" to ");
 
 		if(!(startMonth==endMonth&&startDay==endDay)){
-			sb.append(endDayOfWeek);
-			sb.append(". ");
-			sb.append(endMonth);
-			sb.append("/");
-			sb.append(endDay);
-			sb.append(" ");
+			stringBuilder.append(endDayOfWeek);
+			stringBuilder.append(". ");
+			stringBuilder.append(endMonth);
+			stringBuilder.append("/");
+			stringBuilder.append(endDay);
+			stringBuilder.append(" ");
 		}
 
-		sb.append(endHour);
-		sb.append(":");
-		sb.append(endMinute);
-		sb.append(endAmPm);
+		stringBuilder.append(endHour);
+		stringBuilder.append(":");
+		stringBuilder.append(endMinute);
+		stringBuilder.append(endAmPm);
 
 		//returns the string
-		return sb.toString();
+		return stringBuilder.toString();
 	}
 
 	/**

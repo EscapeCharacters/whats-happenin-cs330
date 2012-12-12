@@ -19,12 +19,12 @@ public class HappeninsCollection {
 		happenins = new ArrayList<Happenin>();
 	}
 	
-	public HappeninsCollection(ArrayList<Happenin> h){
-		happenins = h;		
+	public HappeninsCollection(ArrayList<Happenin> happenin){
+		happenins = happenin;		
 	}
 	
-	public HappeninsCollection(Happenin h) {
-		happenins.add(h);
+	public HappeninsCollection(Happenin happenin) {
+		happenins.add(happenin);
 	}
 	
 	public void initDummy() {

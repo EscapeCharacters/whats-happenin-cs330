@@ -23,14 +23,14 @@ public class MyDatePicker extends Activity {
     }
     
     public void submit(View view) {
-    	DatePicker dp = (DatePicker)findViewById(R.id.date_picker);
-    	TimePicker tp = (TimePicker)findViewById(R.id.time_picker);
+    	DatePicker datePicker = (DatePicker)findViewById(R.id.date_picker);
+    	TimePicker timePicker = (TimePicker)findViewById(R.id.time_picker);
     	Intent data = new Intent();
-    	data.putExtra("month", dp.getMonth());
-    	data.putExtra("day", dp.getDayOfMonth());
-    	data.putExtra("year", dp.getYear());
-    	data.putExtra("hour", tp.getCurrentHour());
-    	data.putExtra("minute", tp.getCurrentMinute());
+    	data.putExtra("month", datePicker.getMonth());
+    	data.putExtra("day", datePicker.getDayOfMonth());
+    	data.putExtra("year", datePicker.getYear());
+    	data.putExtra("hour", timePicker.getCurrentHour());
+    	data.putExtra("minute", timePicker.getCurrentMinute());
     	
     	setResult(startOrEnd, data);
     	finish();

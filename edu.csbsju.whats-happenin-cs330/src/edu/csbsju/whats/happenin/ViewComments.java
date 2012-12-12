@@ -25,7 +25,7 @@ import android.view.inputmethod.InputMethodManager;
  */
 public class ViewComments extends Activity {
 	ArrayList<Comment> comments = new ArrayList<Comment>();
-	int myHappeninID, userID;
+	int myHappeninID, userId;
 
     @Override
     /**
@@ -35,10 +35,10 @@ public class ViewComments extends Activity {
     public void onCreate(Bundle savedInstanceState) {
     	Intent i = getIntent();
     	myHappeninID = i.getIntExtra("happId", 0);
-    	userID = i.getIntExtra("userID", 0);
+    	userId = i.getIntExtra("userId", 0);
     	
     	//debugging
-    	//toastLong(""+userID);
+    	//toastLong(""+userId);
     	
 		try {
 			comments = SQLHelper.getCommentsByHappeninId(myHappeninID);
@@ -83,16 +83,16 @@ public class ViewComments extends Activity {
     }
     
     public void postComment(View view) {
-		EditText commentET = (EditText)findViewById(R.id.comment);
-		String comment = commentET.getText().toString(); 
+		EditText commentText = (EditText)findViewById(R.id.comment);
+		String comment = commentText.getText().toString(); 
 
 		if (comment.length() != 0) {
 			try {
-				SQLHelper.insertComment(userID, myHappeninID, comment);
+				SQLHelper.insertComment(userId, myHappeninID, comment);
 				closeKeyboard();
 				closeMakeCommentDrawer();
 				toastShort("Comment posted");
-				commentET.setText("");
+				commentText.setText("");
 			}
 			catch(Exception e) {
 				toastLong("Debug: "+e.toString());

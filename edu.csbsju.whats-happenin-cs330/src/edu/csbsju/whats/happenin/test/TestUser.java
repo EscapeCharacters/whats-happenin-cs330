@@ -44,7 +44,7 @@ public class TestUser extends TestCase {
 	
 	public void testGetSetUserId() {
 		user.setUserId(5);
-		assertEquals("The UserID of the user should be 5", 5, user.getUserId());
+		assertEquals("The UserId of the user should be 5", 5, user.getUserId());
 	}
 
 	public void testGetEmailAddress() {

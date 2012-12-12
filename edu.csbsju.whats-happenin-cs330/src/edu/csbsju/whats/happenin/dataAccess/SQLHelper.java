@@ -60,13 +60,13 @@ public class SQLHelper {
 	
 	/**
 	 * Gets a user given an ID number
-	 * @param id The user ID of the user desired
+	 * @param userId The user ID of the user desired
 	 * @return The User object for the USER id, with status EMPTY if the user ID doesn't exist
 	 */
-	public static User getUserById(int id) {
+	public static User getUserById(int userId) {
 		User user = null;
 		RequestTask task = new RequestTask();
-		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/userById.php?id="+id);
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/userById.php?id="+userId);
 		try {
 			task.get(2000, TimeUnit.MILLISECONDS);
 		} catch (InterruptedException e) {
@@ -118,10 +118,10 @@ public class SQLHelper {
 		String result = task.getJsonData();
 		try{
 			happenins = new ArrayList<Happenin>();
-			JSONArray jArray = new JSONArray(result);
+			JSONArray jsonArray = new JSONArray(result);
 			JSONObject json_data=null;
-			for(int i=0;i<jArray.length(); i++) {
-				json_data = jArray.getJSONObject(i);
+			for(int i=0;i<jsonArray.length(); i++) {
+				json_data = jsonArray.getJSONObject(i);
 				happ = new Happenin();
 				happ.setName(json_data.getString("name"));
 				happ.setDescription(json_data.getString("description"));
@@ -140,14 +140,14 @@ public class SQLHelper {
 	
 	/**
 	 * Gets a happenin given a happenin ID
-	 * @param happId The ID of the happenin desired
+	 * @param happeninId The ID of the happenin desired
 	 * @return The Happenin corresponding to the ID given, or a Happenin with Status
 	 * EMPTY if the 
 	 */
-	public static Happenin getHappeninById(int happId){
-		Happenin happ = null;
+	public static Happenin getHappeninById(int happeninId){
+		Happenin happenin = null;
 		RequestTask task = new RequestTask();
-		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/happenin.php?id="+happId);
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/happenin.php?id="+happeninId);
 		try {
 			task.get(2000, TimeUnit.MILLISECONDS);
 		} catch (InterruptedException e) {
@@ -159,17 +159,17 @@ public class SQLHelper {
 		}
 		String result = task.getJsonData();
 		try{
-			JSONArray jArray = new JSONArray(result);
+			JSONArray jsonArray = new JSONArray(result);
 			JSONObject json_data=null;
-			for(int i=0;i<jArray.length(); i++) {
-				json_data = jArray.getJSONObject(i);
-				happ = new Happenin();
-				happ.setName(json_data.getString("name"));
-				happ.setDescription(json_data.getString("description"));
-				happ.setLocation(json_data.getString("location"));
-				happ.setId(json_data.getInt("id"));
-				happ.setStartTime(parseMySqlDate(json_data.getString("startDateTime")));
-				happ.setEndTime(parseMySqlDate(json_data.getString("endDateTime")));
+			for(int i=0;i<jsonArray.length(); i++) {
+				json_data = jsonArray.getJSONObject(i);
+				happenin = new Happenin();
+				happenin.setName(json_data.getString("name"));
+				happenin.setDescription(json_data.getString("description"));
+				happenin.setLocation(json_data.getString("location"));
+				happenin.setId(json_data.getInt("id"));
+				happenin.setStartTime(parseMySqlDate(json_data.getString("startDateTime")));
+				happenin.setEndTime(parseMySqlDate(json_data.getString("endDateTime")));
 			}
 		}
 		catch(JSONException e1){
@@ -178,12 +178,12 @@ public class SQLHelper {
 
 		}
 		
-		if(happ == null){
-			happ = new Happenin();
-			happ.setStatus(Happenin.Status.EMPTY);
+		if(happenin == null){
+			happenin = new Happenin();
+			happenin.setStatus(Happenin.Status.EMPTY);
 		}
 		
-		return happ;
+		return happenin;
 	}
 	
 	/** Gets a list of comments for a given happenin ID */
@@ -196,10 +196,10 @@ public class SQLHelper {
 		String result = task.getJsonData();
 		try{
 			comments = new ArrayList<Comment>();
-			JSONArray jArray = new JSONArray(result);
+			JSONArray jsonArray = new JSONArray(result);
 			JSONObject json_data=null;
-			for(int i=0;i<jArray.length(); i++) {
-				json_data = jArray.getJSONObject(i);
+			for(int i=0;i<jsonArray.length(); i++) {
+				json_data = jsonArray.getJSONObject(i);
 				comment = new Comment();
 				comment.setUserId(json_data.getInt("userId"));
 				comment.setComment(json_data.getString("comment"));
@@ -223,11 +223,11 @@ public class SQLHelper {
 	}
 	
 	/** Gets an ArrayList of Ratings for a given happenin ID */
-	public static ArrayList<Rating> getRatingsByHappeninId(int id) {
+	public static ArrayList<Rating> getRatingsByHappeninId(int happeninId) {
 		Rating rating = null;
 		ArrayList<Rating> ratings = null;
 		RequestTask task = new RequestTask();
-		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/ratingsByHappenin.php?happId="+id);
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/ratingsByHappenin.php?happId="+happeninId);
 		try {
 			task.get(2000, TimeUnit.MILLISECONDS);
 		} catch (InterruptedException e) {
@@ -240,10 +240,10 @@ public class SQLHelper {
 		String result = task.getJsonData();
 		try{
 			ratings = new ArrayList<Rating>();
-			JSONArray jArray = new JSONArray(result);
+			JSONArray jsonArray = new JSONArray(result);
 			JSONObject json_data=null;
-			for(int i=0;i<jArray.length(); i++) {
-				json_data = jArray.getJSONObject(i);
+			for(int i=0;i<jsonArray.length(); i++) {
+				json_data = jsonArray.getJSONObject(i);
 				rating = new Rating();
 				rating.setHappId(json_data.getInt("happId"));
 				rating.setRating(json_data.getInt("rating"));
@@ -261,10 +261,10 @@ public class SQLHelper {
 	}
 	
 	/** Inserts a comment */
-	public static void insertComment(int userId, int happId, String comment){
+	public static void insertComment(int userId, int happeninId, String comment){
 		RequestTask task = new RequestTask();
 		String fixedComment = comment.replaceAll(" ", "+");
-		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/insertComment.php?happid="+happId+"&comment="+fixedComment+"&userid="+userId);
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/insertComment.php?happid="+happeninId+"&comment="+fixedComment+"&userid="+userId);
 	}
 	
 	/** Inserts a new user */
@@ -278,19 +278,19 @@ public class SQLHelper {
 	 * @throws TimeoutException 
 	 * @throws ExecutionException 
 	 * @throws InterruptedException */
-	public static void createRating(int rating, int userID, int happId) throws InterruptedException, ExecutionException, TimeoutException{
+	public static void createRating(int rating, int userId, int happeninId) throws InterruptedException, ExecutionException, TimeoutException{
 		RequestTask task = new RequestTask();
-		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/insertRating.php?userid="+userID+"&happid="+happId+"&rating="+rating);
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/insertRating.php?userid="+userId+"&happid="+happeninId+"&rating="+rating);
 		task.get(2000, TimeUnit.MILLISECONDS);
 	}
 	
 	public static void insertHappenin(String name, String description, DateTime startDateTime, DateTime endDateTime, String location) throws InterruptedException, ExecutionException, TimeoutException{
-		String happName = name.replaceAll("'", "''");
-		happName = happName.replaceAll(" ", "+");
-		String happDescription = description.replaceAll("'", "''");
-		happDescription = happDescription.replaceAll(" ", "+");
-		String happLocation = location.replaceAll("'", "''");
-		happLocation = happLocation.replaceAll(" ", "+");
+		String happeninName = name.replaceAll("'", "''");
+		happeninName = happeninName.replaceAll(" ", "+");
+		String happeninDescription = description.replaceAll("'", "''");
+		happeninDescription = happeninDescription.replaceAll(" ", "+");
+		String happeninLocation = location.replaceAll("'", "''");
+		happeninLocation = happeninLocation.replaceAll(" ", "+");
 		
 		int startYear = startDateTime.year().get();
 		int startMonth = startDateTime.monthOfYear().get();
@@ -309,7 +309,7 @@ public class SQLHelper {
 		String endDate = ""+endYear+"-"+endMonth+"-"+endDay+"+"+endHour+":"+endMinute+":"+endSecond;
 		
 		RequestTask task = new RequestTask();
-		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/insertHappenin.php?name="+happName+"&description="+happDescription+"&startDateTime="+startDate+"&endDateTime="+endDate+"&location="+happLocation+"");
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/insertHappenin.php?name="+happeninName+"&description="+happeninDescription+"&startDateTime="+startDate+"&endDateTime="+endDate+"&location="+happeninLocation+"");
 		task.get(2000, TimeUnit.MILLISECONDS);
 	}
 	

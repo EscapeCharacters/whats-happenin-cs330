@@ -25,8 +25,8 @@ import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 public class ViewHappenin extends Activity {
 
 	//private int myHappLoc;
-	private Happenin myHap;
-	private int userID;
+	private Happenin myHappenin;
+	private int userId;
 
 	@Override
 	/**
@@ -38,9 +38,9 @@ public class ViewHappenin extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		Intent intent = getIntent();
-    	userID=intent.getIntExtra("userID", 0);
+    	userId=intent.getIntExtra("userId", 0);
     	//debugging
-    	//toastLong(""+userID);
+    	//toastLong(""+userId);
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_happenin_dialog);
@@ -68,10 +68,10 @@ public class ViewHappenin extends Activity {
 		//Get and set the happenin to display
 		Intent myIntent = getIntent();
 		//myHappLoc = myIntent.getIntExtra("clicked", -1);
-		int myHappId = myIntent.getIntExtra("happId", -1);
-		myHap = SQLHelper.getHappeninById(myHappId);
+		int myHappeninId = myIntent.getIntExtra("happId", -1);
+		myHappenin = SQLHelper.getHappeninById(myHappeninId);
 
-		if (myHap.getStatus() != Happenin.Status.EMPTY){
+		if (myHappenin.getStatus() != Happenin.Status.EMPTY){
 			TextView title = new TextView(ViewHappenin.this), 
 			description = new TextView(ViewHappenin.this);
 			TextView location = new TextView(ViewHappenin.this);
@@ -84,7 +84,7 @@ public class ViewHappenin extends Activity {
 			
 			
 			String formattedAverage ="";
-			double avg = myHap.getAverageRating();
+			double avg = myHappenin.getAverageRating();
 			if(avg>=0){
 				formattedAverage = String.format("%.1f", avg);
 				ratingField.setText("Rating: " + formattedAverage);
@@ -93,12 +93,12 @@ public class ViewHappenin extends Activity {
 				ratingField.setText("");
 			}
 			
-			title.setText(myHap.getName());
-			description.setText(myHap.getDescription());
-			location.setText(myHap.getLocation());
-			when.setText(myHap.getTimeString());	
+			title.setText(myHappenin.getName());
+			description.setText(myHappenin.getDescription());
+			location.setText(myHappenin.getLocation());
+			when.setText(myHappenin.getTimeString());	
 			
-			if(myHap.getStartTime().isAfterNow()){
+			if(myHappenin.getStartTime().isAfterNow()){
 				RatingBar ratingsBar = (RatingBar)findViewById(R.id.ratingBar);
 				ratingsBar.setVisibility(RatingBar.GONE);
 				Button rateButton = (Button)findViewById(R.id.create_rating);
@@ -169,29 +169,29 @@ public class ViewHappenin extends Activity {
 	 * @param v
 	 */
 	public void viewComments(View v){
-		Intent i = new Intent(ViewHappenin.this, ViewComments.class);
-		i.putExtra("happId", myHap.getId());
-		i.putExtra("userID", userID);
-        startActivity(i);
+		Intent intent = new Intent(ViewHappenin.this, ViewComments.class);
+		intent.putExtra("happId", myHappenin.getId());
+		intent.putExtra("userId", userId);
+        startActivity(intent);
 	}
 	
 	public void createRating(View v){
 		Intent intent = getIntent();
-    	userID=intent.getIntExtra("userID", 0);
+    	userId=intent.getIntExtra("userId", 0);
     	
     	RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
     	float rating = ratingBar.getRating();
     	
-    	int happId = myHap.getId();
+    	int happeninId = myHappenin.getId();
     	
     	try {
-			SQLHelper.createRating((int)rating, userID, happId);
+			SQLHelper.createRating((int)rating, userId, happeninId);
 			toastLong("Rating sumbitted.");
 			
 			TextView ratingField = new TextView(ViewHappenin.this);
 			ratingField = (TextView)findViewById(R.id.rating);
-			double avg = myHap.getAverageRating();
-			String formattedAverage = String.format("%.1f", avg);
+			double average = myHappenin.getAverageRating();
+			String formattedAverage = String.format("%.1f", average);
 			ratingField.setText("Rating: " +formattedAverage);
 			
 		} catch (Exception e){

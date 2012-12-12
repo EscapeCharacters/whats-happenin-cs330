@@ -32,13 +32,13 @@ import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
  */
 public class ViewHappenins extends Activity {
 
-	ArrayList<Happenin> happs = new ArrayList<Happenin>();
+	ArrayList<Happenin> happenins = new ArrayList<Happenin>();
 	private static int MY_KEY = 1111; 
 	public static final int ERROR = -1, START_TIME = 0, END_TIME = 1;
 	private DateTime startTime_DT = null, endTime_DT = null;
 
 
-	private int userID;
+	private int userId;
 
 	@Override
 	/**
@@ -47,10 +47,10 @@ public class ViewHappenins extends Activity {
 	 */
 	public void onCreate(Bundle savedInstanceState) {
 		Intent intent = getIntent();
-		userID=intent.getIntExtra("userID", 0);
+		userId=intent.getIntExtra("userId", 0);
 
 		//debugging
-		//toastLong(""+userID);
+		//toastLong(""+userId);
 		//    	Intent i = new Intent(this, CreateNewHappenin.class);
 		//    	toastLong("Debug into Create New Happenin");
 		//    	startActivity(i);
@@ -58,7 +58,7 @@ public class ViewHappenins extends Activity {
 
 
 		try {
-			happs = SQLHelper.getHappenins();
+			happenins = SQLHelper.getHappenins();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -83,8 +83,8 @@ public class ViewHappenins extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 				Intent i = new Intent(ViewHappenins.this, ViewHappenin.class);
 				i.putExtra("clicked", position);
-				i.putExtra("happId", happs.get(position).getId());
-				i.putExtra("userID", userID);
+				i.putExtra("happId", happenins.get(position).getId());
+				i.putExtra("userId", userId);
 				startActivity(i);
 			}
 		});
@@ -97,7 +97,7 @@ public class ViewHappenins extends Activity {
 		ArrayAdapter<Happenin> adapter = 
 				new ArrayAdapter<Happenin>
 		(this, android.R.layout.simple_list_item_1, android.R.id.text1, 
-				happs);
+				happenins);
 		listView.setAdapter(adapter);
 
 		/*
@@ -337,7 +337,7 @@ public class ViewHappenins extends Activity {
 		if(item.getItemId() == R.id.view_happenins_menu){ //Refresh the list of happenins
 			ListView listView = (ListView) findViewById(R.id.mylist);
 			try {
-				happs = SQLHelper.getHappenins();
+				happenins = SQLHelper.getHappenins();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -351,13 +351,13 @@ public class ViewHappenins extends Activity {
 			ArrayAdapter<Happenin> adapter = 
 					new ArrayAdapter<Happenin>
 			(this, android.R.layout.simple_list_item_1, android.R.id.text1, 
-					happs);
+					happenins);
 			listView.setAdapter(adapter);
 			return true;
 		} else if(item.getItemId() == R.id.change_password_menu){ //Sends a user to the change password screen
-			Intent i = new Intent(ViewHappenins.this, ChangePassword.class);
-			i.putExtra("userId", userID);
-			startActivity(i);
+			Intent intent = new Intent(ViewHappenins.this, ChangePassword.class);
+			intent.putExtra("userId", userId);
+			startActivity(intent);
 			return true;
 		} else if(item.getItemId() == R.id.log_out_menu){ //Logs out the user
 			Intent intent = new Intent(getApplicationContext(), Login.class);

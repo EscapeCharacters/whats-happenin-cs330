@@ -48,11 +48,11 @@ This is the method that handles the creating of a new user when the 'Create' but
 		EditText userText = (EditText)findViewById(R.id.new_username);
 		String username = userText.getText().toString();
 
-		EditText pswdText = (EditText)findViewById(R.id.new_password);
-		String password = pswdText.getText().toString();
+		EditText passwordText = (EditText)findViewById(R.id.new_password);
+		String password = passwordText.getText().toString();
 		
-		EditText cnfmPswdText = (EditText)findViewById(R.id.confirm_new_password);
-		String confirmedPassword = cnfmPswdText.getText().toString();
+		EditText confirmPasswordText = (EditText)findViewById(R.id.confirm_new_password);
+		String confirmedPassword = confirmPasswordText.getText().toString();
 		
 		EditText emailText = (EditText)findViewById(R.id.new_email);
 		String email = emailText.getText().toString();
@@ -69,27 +69,27 @@ This is the method that handles the creating of a new user when the 'Create' but
 		//the following validation is pulled into seperate methods to allow for unit testing.
 		// Whether the username is already taken cannot be unit tested becouse that requires info from the DB.
 
-		String passValMsg = validatePassword(password, confirmedPassword);
-		String emailValMsg = validateEmail(email);
-		String usernameValMsg = validateUsername(username);
-		String nameValMsg = validateName(name);
+		String passwordValidationMessage = validatePassword(password, confirmedPassword);
+		String emailValidationMessage = validateEmail(email);
+		String usernameValidationMessage = validateUsername(username);
+		String nameValidationMessage = validateName(name);
 		
-		if(!passValMsg.equals(""))
-			toastErrorMsg(passValMsg);
-		else if(!emailValMsg.equals(""))
-			toastErrorMsg(emailValMsg);
-		else if(!usernameValMsg.equals(""))
-			toastErrorMsg(usernameValMsg);
-		else if(!nameValMsg.equals(""))
-			toastErrorMsg(nameValMsg);
+		if(!passwordValidationMessage.equals(""))
+			toastErrorMsg(passwordValidationMessage);
+		else if(!emailValidationMessage.equals(""))
+			toastErrorMsg(emailValidationMessage);
+		else if(!usernameValidationMessage.equals(""))
+			toastErrorMsg(usernameValidationMessage);
+		else if(!nameValidationMessage.equals(""))
+			toastErrorMsg(nameValidationMessage);
 		else if (user.getStatus() != User.Status.EMPTY) {
 			toastErrorMsg("Username already taken.  Please try a new username!");
 		}
 		else{ 
 			SQLHelper.createUser(username, confirmedPassword, email, name);
-			Intent i = new Intent(CreateNewUser.this, Login.class);
+			Intent intent = new Intent(CreateNewUser.this, Login.class);
 			toastErrorMsg("User created!  Please log in.");
-			startActivity(i);
+			startActivity(intent);
 		}
 	}
 	

@@ -22,22 +22,22 @@ class RequestTask extends AsyncTask<String, String, String>{
     protected String doInBackground(String... uri) {
 		String nextLine;
 		URL url = null;
-		URLConnection urlConn = null;
+		URLConnection urlConnection = null;
 		InputStreamReader  inStream = null;
-		BufferedReader buff = null;
+		BufferedReader bufferedReader = null;
 		try{
 			// Create the URL object that points
 			// at the default file index.html
 			url  = new URL(uri[0]);
-			urlConn = url.openConnection();
+			urlConnection = url.openConnection();
 			inStream = new InputStreamReader( 
-					urlConn.getInputStream());
-			buff= new BufferedReader(inStream);
+					urlConnection.getInputStream());
+			bufferedReader= new BufferedReader(inStream);
 
 			StringBuilder sb = new StringBuilder("");
 			// Read and print the lines from uri[0]
 			while (true){
-				nextLine = buff.readLine();  
+				nextLine = bufferedReader.readLine();  
 				if (nextLine !=null){
 					sb.append(nextLine);
 				}
