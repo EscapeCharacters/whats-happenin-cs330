@@ -1,6 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/view_happenins"
+    <item android:id="@+id/view_happenins_menu"
         android:title="@string/happenins_refresh"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+    <item android:id="@+id/change_password_menu"
+        android:title="@string/title_activity_change_password"
         android:orderInCategory="100"
         android:showAsAction="never" />
 </menu>

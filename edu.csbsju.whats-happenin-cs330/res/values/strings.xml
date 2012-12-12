@@ -34,5 +34,11 @@
     <string name="create_happenin">Create a new Happenin</string>
     <string name="create_rating">Rate</string>
     <string name="happenins_refresh">Refresh Happenins</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_change_password">Change Password</string>
+    <string name="change_password_new_password">enter new password</string>
+    <string name="change_password_old_password">enter old password</string>
+    <string name="change_password_button">Change Password</string>
 
 </resources>

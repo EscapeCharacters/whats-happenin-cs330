@@ -314,6 +314,12 @@ public class SQLHelper {
 		task.get(2000, TimeUnit.MILLISECONDS);
 	}
 	
+	public static void updatePassword(int userId, String newPassword) throws InterruptedException, ExecutionException, TimeoutException{
+		RequestTask task = new RequestTask();
+		task.execute("http://www.users.csbsju.edu/~ajthom/cs330/updatePassword.php?userid="+userId+"&password="+newPassword);
+		task.get(2000, TimeUnit.MILLISECONDS);
+	}
+	
 	/** This parses the MySQL DATETIME string into a DateTime object in Java */
 	public static DateTime parseMySqlDate(String dateString){
 		String[] split1 = dateString.split(" ");//Separates the Date and Time

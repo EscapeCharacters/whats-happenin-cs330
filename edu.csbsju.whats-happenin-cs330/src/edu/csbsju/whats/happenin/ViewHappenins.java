@@ -113,25 +113,33 @@ public class ViewHappenins extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		ListView listView = (ListView) findViewById(R.id.mylist);
-		try {
-			happs = SQLHelper.getHappenins();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TimeoutException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(item.getItemId() == R.id.view_happenins_menu){
+			ListView listView = (ListView) findViewById(R.id.mylist);
+			try {
+				happs = SQLHelper.getHappenins();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TimeoutException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			ArrayAdapter<Happenin> adapter = 
+					new ArrayAdapter<Happenin>
+			(this, android.R.layout.simple_list_item_1, android.R.id.text1, 
+					happs);
+			listView.setAdapter(adapter);
+			return true;
+		} else if(item.getItemId() == R.id.change_password_menu){
+			Intent i = new Intent(ViewHappenins.this, ChangePassword.class);
+			i.putExtra("userId", userID);
+			startActivity(i);
+			return true;
 		}
-		ArrayAdapter<Happenin> adapter = 
-				new ArrayAdapter<Happenin>
-		(this, android.R.layout.simple_list_item_1, android.R.id.text1, 
-				happs);
-		listView.setAdapter(adapter);
-		return true;
+		return false;
 	}
 
 }
