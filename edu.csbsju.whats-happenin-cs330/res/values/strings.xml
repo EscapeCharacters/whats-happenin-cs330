@@ -32,15 +32,12 @@
     <string name="new_happenin_description">Now give us some details</string>
     <string name="new_happenin_location">location</string>
     <string name="create_happenin">Create a new Happenin</string>
-<<<<<<< HEAD
     <string name="label_to">to</string>
     <string name="new_happenin_start_time">start time</string>
     <string name="new_happenin_end_time">end time</string>
-    <string name="menu_settings">Settings</string>
     <string name="title_activity_my_date_picker">MyDatePicker</string>
     <string name="picker_button">Submit</string>
     <string name="sumbit_new_happenin">Sumbit new Happnin</string>
-=======
     <string name="create_rating">Rate</string>
     <string name="happenins_refresh">Refresh Happenins</string>
     <string name="hello_world">Hello world!</string>
@@ -50,6 +47,5 @@
     <string name="change_password_old_password">enter old password</string>
     <string name="change_password_button">Change Password</string>
     <string name="logout">Log Out</string>
->>>>>>> 39b2063afd66471d58ac11ae178f5aeed32f7a33
 
 </resources>

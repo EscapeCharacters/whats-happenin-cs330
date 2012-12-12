@@ -20,12 +20,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-<<<<<<< HEAD
 import android.widget.EditText;
-=======
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
->>>>>>> 39b2063afd66471d58ac11ae178f5aeed32f7a33
 import android.widget.ListView;
 import android.widget.SlidingDrawer;
 import android.widget.Toast;
@@ -41,12 +38,10 @@ public class ViewHappenins extends Activity {
 
 	HappeninsCollection happsCollection = new HappeninsCollection();
 	ArrayList<Happenin> happs = new ArrayList<Happenin>();
-<<<<<<< HEAD
 	private static int MY_KEY = 1111; 
 	public static int ERROR = -1, START_TIME = 0, END_TIME = 1;
 	private DateTime startTime_DT = null, endTime_DT = null;
-=======
->>>>>>> 39b2063afd66471d58ac11ae178f5aeed32f7a33
+
 
 	private int userID;
 
@@ -62,12 +57,9 @@ public class ViewHappenins extends Activity {
 
 		//debugging
 		//toastLong(""+userID);
-<<<<<<< HEAD
-=======
 		//    	Intent i = new Intent(this, CreateNewHappenin.class);
 		//    	toastLong("Debug into Create New Happenin");
 		//    	startActivity(i);
->>>>>>> 39b2063afd66471d58ac11ae178f5aeed32f7a33
 
 
 
@@ -113,7 +105,6 @@ public class ViewHappenins extends Activity {
 		(this, android.R.layout.simple_list_item_1, android.R.id.text1, 
 				happs);
 		listView.setAdapter(adapter);
-<<<<<<< HEAD
 
 		/*
 		 * Setup for the Create New Happenins drawer
@@ -315,10 +306,8 @@ public class ViewHappenins extends Activity {
 	}
 
 
-=======
-	}
 
->>>>>>> 39b2063afd66471d58ac11ae178f5aeed32f7a33
+	
 	public void toastLong(String message){
 		Context context = getApplicationContext();
 		CharSequence text = message;
@@ -341,8 +330,6 @@ public class ViewHappenins extends Activity {
 		getMenuInflater().inflate(R.menu.activity_view_happenins, menu);
 		return true;
 	}
-<<<<<<< HEAD
-=======
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -383,6 +370,5 @@ public class ViewHappenins extends Activity {
 	@Override
 	public void onBackPressed() {
 	}
->>>>>>> 39b2063afd66471d58ac11ae178f5aeed32f7a33
 
 }
