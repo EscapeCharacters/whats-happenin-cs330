@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeFieldType;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
