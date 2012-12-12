@@ -17,9 +17,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * @author awzurn
- * Will be linked from the Login Page, where a new user will be created,
- * validated, and will be submitted to the database.
+ * @author EscapeCharacters
+ * This class is used as the activity to change your password.
  */
 public class ChangePassword extends Activity{
 	
@@ -28,17 +27,10 @@ public class ChangePassword extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_change_password);
 	}
-
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		getMenuInflater().inflate(R.menu.activity_new_user, menu);
-//		return true;
-//	}
 	
-
-/**
-This is the method that handles the creating of a new user when the 'Create' button is pushed
-*/
+	/**
+	 * The method called from button in the xml file that then processes and changes a users password.
+	 */
 	public void changePassword(View view) throws InterruptedException, ExecutionException, TimeoutException{
 		User user = null;
 		
@@ -70,6 +62,12 @@ This is the method that handles the creating of a new user when the 'Create' but
 		
 	}
 	
+	/**
+	 * Validates the password given by the user.
+	 * @param password the new password
+	 * @param confirmedPassword password used to validate the new password
+	 * @return empty string on success, otherwise a string containing an error message.
+	 */
 	public String validatePassword(String password, String confirmedPassword){
 		if( password.length() <= 6){ //password not long enough
 			return "Password must be longer than 6 characters!";
@@ -91,9 +89,11 @@ This is the method that handles the creating of a new user when the 'Create' but
 		return "";
 	}
 	
-/*
-A standard method to create a 'Toast' (popup) error message
-*/
+
+	/**
+	 * Used to display a toast message on the screen.
+	 * @param error the message.
+	 */
 	public void toastErrorMsg(String error){
 		Context context = getApplicationContext();
 		CharSequence text = error;

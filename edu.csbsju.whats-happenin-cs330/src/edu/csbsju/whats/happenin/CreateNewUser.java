@@ -29,17 +29,11 @@ public class CreateNewUser extends Activity{
 		setContentView(R.layout.activity_new_user);
 	}
 
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		getMenuInflater().inflate(R.menu.activity_new_user, menu);
-//		return true;
-//	}
-	
 
-/**
-This is the method that handles the creating of a new user when the 'Create' button is pushed
-*/
 	@SuppressWarnings("unused")
+	/**
+	 * Called from the button in the xml file that will create a new user within the database.
+	 */
 	public void newUser(View view) throws InterruptedException, ExecutionException, TimeoutException{
 		User user = null;
 		EditText nameText = (EditText)findViewById(R.id.new_name);
@@ -94,8 +88,11 @@ This is the method that handles the creating of a new user when the 'Create' but
 	}
 	
 	
-	//Validation methods for incoming New User info	
-	//These need not be public, except we need the test class to access them
+	/**
+	 * Validates the email address of the user, must be a @csbsju.edu address.
+	 * @param email email address to be validated
+	 * @return empty string on success, otherwise string containing error message.
+	 */
 	public String validateEmail(String email){
 		if( email.length() < 11 || !email.substring(email.length()-10,email.length()).equals("csbsju.edu")){ //non-valid email
 			return "Please enter a valid CSBSJU email address!";			
@@ -103,6 +100,12 @@ This is the method that handles the creating of a new user when the 'Create' but
 		return "";
 	}
 	
+	/**
+	 * Validates the password against the confirmed password
+	 * @param password the password
+	 * @param confirmedPassword the confirmation password to be validated against
+	 * @return empty string on success, otherwise string containing error message
+	 */
 	public String validatePassword(String password, String confirmedPassword){
 		if( password.length() <= 6){ //password not long enough
 			return "Password must be longer than 6 characters!";
@@ -124,6 +127,11 @@ This is the method that handles the creating of a new user when the 'Create' but
 		return "";
 	}
 	
+	/**
+	 * Validates the given username
+	 * @param username the username
+	 * @return empty string on success, otherwise string containing error message
+	 */
 	public String validateUsername(String username){
 		if( username.length() <= 6){ //username not long enough
 			return "Username must be longer than 6 characters!";
@@ -131,6 +139,11 @@ This is the method that handles the creating of a new user when the 'Create' but
 		return "";
 	}
 	
+	/**
+	 * Validates the given name.
+	 * @param name the name
+	 * @return empty string on success, otherwise a string containing  error message.
+	 */
 	public String validateName(String name){
 		if( !name.contains(" ")){ //does not contain a space, thus no last name (need to further checkt this)
 			return "Please enter first and last name!";
@@ -138,9 +151,10 @@ This is the method that handles the creating of a new user when the 'Create' but
 		return "";
 	}
 	
-/*
-A standard method to create a 'Toast' (popup) error message
-*/
+	/**
+	 * Used to display a toast message on the screen.
+	 * @param error the message to be displayed.
+	 */
 	public void toastErrorMsg(String error){
 		Context context = getApplicationContext();
 		CharSequence text = error;
