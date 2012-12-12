@@ -98,6 +98,8 @@ public class ViewComments extends Activity {
 				toastLong("Debug: "+e.toString());
 			}
 		}
+		refreshCommentsList();
+
 	}
 
 	public void openMakeCommentDrawer(){
@@ -147,8 +149,31 @@ public class ViewComments extends Activity {
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			toastLong("Log out successful");
+		} else if(item.getItemId() == R.id.refresh_comments_list_menu){
+			refreshCommentsList();
 		}
 		return false;
+	}
+	
+	public void refreshCommentsList(){
+		ListView listView = (ListView) findViewById(R.id.commentList);
+		try {
+			comments = SQLHelper.getCommentsByHappeninId(myHappeninID);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TimeoutException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        ArrayAdapter<Comment> adapter = 
+    		new ArrayAdapter<Comment>
+    			(this, android.R.layout.simple_list_item_1, android.R.id.text1, 
+    			comments);
+        listView.setAdapter(adapter);   
 	}
 
 }

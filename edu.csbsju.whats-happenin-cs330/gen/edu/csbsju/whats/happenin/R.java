@@ -36,7 +36,7 @@ public final class R {
     }
     public static final class id {
         public static final int change_password_confirm_new_password=0x7f090002;
-        public static final int change_password_menu=0x7f09002f;
+        public static final int change_password_menu=0x7f090030;
         public static final int change_password_new_password=0x7f090001;
         public static final int comment=0x7f090009;
         public static final int commentList=0x7f090005;
@@ -53,7 +53,7 @@ public final class R {
         public static final int happenin_drawer_button=0x7f090026;
         public static final int happenin_drawer_content=0x7f090025;
         public static final int label_to=0x7f090028;
-        public static final int log_out_menu=0x7f090030;
+        public static final int log_out_menu=0x7f090031;
         public static final int log_out_menu_comments=0x7f09002d;
         public static final int menu_settings=0x7f09002b;
         public static final int mylist=0x7f090023;
@@ -73,6 +73,7 @@ public final class R {
         public static final int post_comment=0x7f09000a;
         public static final int rating=0x7f090012;
         public static final int ratingBar=0x7f090016;
+        public static final int refresh_comments_list_menu=0x7f09002e;
         public static final int scroll=0x7f09000b;
         public static final int scroller=0x7f09000f;
         public static final int spacer=0x7f090004;
@@ -81,7 +82,7 @@ public final class R {
         public static final int title=0x7f090010;
         public static final int username=0x7f090018;
         public static final int view_comments=0x7f090015;
-        public static final int view_happenins_menu=0x7f09002e;
+        public static final int view_happenins_menu=0x7f09002f;
         public static final int when=0x7f090013;
         public static final int where=0x7f090014;
     }
@@ -142,6 +143,7 @@ public final class R {
         public static final int password=0x7f060002;
         public static final int picker_button=0x7f060024;
         public static final int post=0x7f06000f;
+        public static final int refresh_comments_list=0x7f06002f;
         public static final int sumbit_new_happenin=0x7f060025;
         public static final int test_label=0x7f060007;
         public static final int test_text=0x7f060006;
