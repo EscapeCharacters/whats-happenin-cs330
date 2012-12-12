@@ -41,7 +41,7 @@ http://androidcookbook.com/Recipe.seam;jsessionid=DDEB4D265C9B95E1617E3FC126647F
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="#eeffffff" 
-            android:orientation="vertical">
+            android:orientation="horizontal">
             
             <EditText
                 android:id="@+id/comment"

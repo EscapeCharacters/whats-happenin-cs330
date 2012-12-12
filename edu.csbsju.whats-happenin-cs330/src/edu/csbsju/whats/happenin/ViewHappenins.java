@@ -231,6 +231,13 @@ public class ViewHappenins extends Activity {
 								closeKeyboard();
 								closeMakeCommentDrawer();
 								toastShort("Happenin created!");
+								
+								title_ET.setText("");
+								startTime_ET.setText("");
+								endTime_ET.setText("");
+								location_ET.setText("");
+								description_ET.setText("");
+								
 							}
 							catch(Exception e) {
 								toastLong("Debug: "+e.toString());
