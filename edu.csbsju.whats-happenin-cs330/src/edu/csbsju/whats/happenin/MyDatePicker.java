@@ -8,6 +8,11 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
+/**
+ * Class that process the times selected by a user when creating a Happenin.
+ * @author EscapeCharacters
+ * @version 12/12/12
+ */
 public class MyDatePicker extends Activity {
 	
 	private int startOrEnd;

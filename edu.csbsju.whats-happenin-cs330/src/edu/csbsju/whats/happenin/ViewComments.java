@@ -20,8 +20,9 @@ import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 import android.view.inputmethod.InputMethodManager;
 
 /**
- * @author EscapeCharacters
  * This class is used to display the comments associated with an event on the user's screen.
+ * @author EscapeCharacters
+ * @date 12/12/12
  */
 public class ViewComments extends Activity {
 	ArrayList<Comment> comments = new ArrayList<Comment>();

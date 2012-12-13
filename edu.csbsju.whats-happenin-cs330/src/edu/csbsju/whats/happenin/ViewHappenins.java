@@ -25,10 +25,10 @@ import android.widget.Toast;
 import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 
 /**
- * 
- * @author EscapeCharacters
  * This class will create a list of all the happenins currently in the database, and will display them on the screen.
  * Will also allow a user to selectively choose a single happenin, which will start the new activity ViewHappenin.
+ * @author EscapeCharacters
+ * @date 12/12/12
  */
 public class ViewHappenins extends Activity {
 

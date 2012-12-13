@@ -17,10 +17,10 @@ import android.widget.Toast;
 import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 
 /**
- * 
- * @author EscapeCharacters
  * This class is intended to display one happenin, and the info associated with that happenin on the screen.
  * Will also allow the user to access and display the comment associated with that happenin.
+ * @author EscapeCharacters
+ * @date 12/12/12
  */
 public class ViewHappenin extends Activity {
 

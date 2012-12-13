@@ -15,6 +15,11 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SimpleCursorAdapter;
 
+/**
+ * Class the will be used to display different types of data in a list format.
+ * @author EscapeCharacters
+ * @version 12/12/12
+ */
 public class ListViewLoader extends ListActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
 

@@ -17,8 +17,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * @author EscapeCharacters
  * This class is used as the activity to change your password.
+ * @author EscapeCharacters
+ * @date 12/12/12
  */
 public class ChangePassword extends Activity{
 	

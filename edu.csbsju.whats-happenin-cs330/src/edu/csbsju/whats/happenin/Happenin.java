@@ -9,9 +9,9 @@ import org.joda.time.Minutes;
 import edu.csbsju.whats.happenin.dataAccess.SQLHelper;
 
 /**
-Class that stores a Happenin.  Matches up with everything in the database
-@author Chris Norby
-@version 10/15/2012
+ * Class that stores a Happenin.  Matches up with everything in the database
+ * @author Chris Norby
+ * @version 10/15/2012
  */
 public class Happenin {
 

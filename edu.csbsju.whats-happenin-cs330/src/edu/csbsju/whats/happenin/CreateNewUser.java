@@ -17,9 +17,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * @author awzurn
  * Will be linked from the Login Page, where a new user will be created,
  * validated, and will be submitted to the database.
+ * @author EscapeCharacters
+ * @date 12/12/12
  */
 public class CreateNewUser extends Activity{
 	
