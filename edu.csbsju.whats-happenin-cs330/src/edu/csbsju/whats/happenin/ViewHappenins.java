@@ -265,6 +265,11 @@ public class ViewHappenins extends Activity {
 			return "";
 	}
 	
+	/**
+	 * Validates the location entered by the user
+	 * @param location the location of the event
+	 * @return empty string on success, or error message contained in a string
+	 */
 	public String validateLocation(String location){
 		if(location.length()>50)
 			return "Location must be 50 characters or less. Yours is "+location.length()+".";
@@ -272,6 +277,12 @@ public class ViewHappenins extends Activity {
 			return "";
 	}
 
+	/**
+	 * Validates the time of the event
+	 * @param startTime the start time of the event
+	 * @param endTime the end time of the event
+	 * @return empty string on success, or an error message contained in a string
+	 */
 	public String validateTimes(DateTime startTime, DateTime endTime){
 		if(startTime.isAfter(endTime))
 			return "Start time must be before end time.";
@@ -283,6 +294,11 @@ public class ViewHappenins extends Activity {
 		return "";
 	}
 	
+	/**
+	 * Validates the description of the event
+	 * @param description the description of the event
+	 * @return empty string on success, or error message contained in a string
+	 */
 	public String validateDescription(String description){
 		if(description.length()>500)
 			return "Description must be 500 characters or less. Yours is "+description.length()+".";
@@ -373,6 +389,9 @@ public class ViewHappenins extends Activity {
 	}
 	
 	@Override
+	/**
+	 * Used to insure that the user cannot return to the login screen without first logging out.
+	 */
 	public void onBackPressed() {
 	}
 	

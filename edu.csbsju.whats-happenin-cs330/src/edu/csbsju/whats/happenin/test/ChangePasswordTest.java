@@ -11,6 +11,9 @@ public class ChangePasswordTest extends AndroidTestCase{
 		changePassword = new ChangePassword(); 
 	}
 	
+	/**
+	 * Validates the password through a series of tests.
+	 */
 	public void testValidatePassword(){
 		String validPasswordMsg = changePassword.validatePassword("password123", "password123");
 		assertTrue("Valid password failed validation.", validPasswordMsg.equals(""));

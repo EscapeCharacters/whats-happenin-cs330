@@ -175,6 +175,10 @@ public class ViewHappenin extends Activity {
         startActivity(intent);
 	}
 	
+	/**
+	 * Method that will get the rating selected by the user, and add it to the database 
+	 * for that happenin
+	 */
 	public void createRating(View v){
 		Intent intent = getIntent();
     	userId=intent.getIntExtra("userId", 0);

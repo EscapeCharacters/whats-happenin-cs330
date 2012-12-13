@@ -82,6 +82,11 @@ public class ViewComments extends Activity {
         listView.setAdapter(adapter);    
     }
     
+    /**
+     * Handles the operation of adding a comment to a happenin when the user clicks on the button
+     * on the Comment activity
+     * @param view
+     */
     public void postComment(View view) {
 		EditText commentText = (EditText)findViewById(R.id.comment);
 		String comment = commentText.getText().toString(); 
@@ -155,6 +160,11 @@ public class ViewComments extends Activity {
 		return false;
 	}
 	
+	
+	/**
+	 * Handles the operation of refreshing the comments list after a comment is added, or when
+	 * the refresh button is pressed.
+	 */
 	public void refreshCommentsList(){
 		ListView listView = (ListView) findViewById(R.id.commentList);
 		try {
